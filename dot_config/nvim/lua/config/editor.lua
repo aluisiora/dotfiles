@@ -1,31 +1,93 @@
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- vim.opt.isfname:append("@-@")
+-- vim.opt.backspace = { "start", "eol", "indent" }
+
+-- vim.opt.path:append({ "**" })
+-- vim.opt.wildignore:append({ "*/node_modules/*", "*/vendor/*" })
+
+-- Nerd Font is installed
+vim.g.have_nerd_font = true
+
+-- Convert tabs to spaces
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+
+-- Show line numbers as default
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
+
+-- Don't wrap long lines
+vim.opt.wrap = false
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Don't show the mode, since it's already in status line
+vim.opt.showmode = false
+
+-- Keep signcolumn on by default
+vim.opt.signcolumn = "yes"
+
+-- Show a limiter ruler on the right
+vim.opt.colorcolumn = "80"
+
+-- Preview substitutions live on type
+vim.opt.inccommand = "split"
+vim.opt.incsearch = true
+
+-- Sync clipboard between OS and Neovim
+vim.opt.clipboard = 'unnamedplus'
+
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Minimal number of screen lines to keep above and below the cursor
+vim.opt.scrolloff = 12
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitkeep = "cursor"
+
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Auto indentation when typing code blocks and etc
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = false
+
+-- Sets how neovim will display certain whitespace in the editor.
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
+-- Save undo history
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
 
+-- Define how files are encoded
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.splitkeep = "cursor"
-
-vim.opt.path:append({ "**" })
-vim.opt.wildignore:append({ "*/node_modules/*", "*/vendor/*" })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})

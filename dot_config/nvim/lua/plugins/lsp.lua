@@ -10,10 +10,9 @@ return {
 
             lsp_zero.on_attach(function(client, bufnr)
                 -- see :help lsp-zero-keybindings
-                -- to learn the available actions
-                lsp_zero.default_keymaps({ buffer = bufnr })
                 local opts = { buffer = bufnr }
-                require("keymaps").lsp(opts)
+                lsp_zero.default_keymaps(opts)
+                require("keymaps").lsp(opts, require('telescope.builtin'))
             end)
 
             -- technically these are "diagnostic signs"
