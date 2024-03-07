@@ -2,7 +2,7 @@ local K = vim.keymap.set
 
 return {
     general = function()
-        K("n", "<leader>nn", vim.cmd.Ex, { desc = "[N]avigate to [N]etwr" })
+        K("n", "<leader>gn", vim.cmd.Ex, { desc = "[G]oto [N]etwr" })
         K("n", "x", '"_x')
 
         -- Increment/decrement numbers
@@ -14,13 +14,10 @@ return {
         K("v", "K", ":m '<-2<CR>gv=gv")
 
         -- Pg up, pg down and searches with cursor in place
-        K("n", "<C-d>", "<C-d>zz")
-        K("n", "<C-u>", "<C-u>zz")
+        K("n", "<C-d>", "<C-d>zz", { desc = "Page down"})
+        K("n", "<C-u>", "<C-u>zz", { desc = "Page up"})
         K("n", "n", "nzzzv")
         K("n", "N", "Nzzzv")
-
-        -- Paste without losing clipboard info
-        K("x", "<leader>p", "\"_dP")
 
         -- Split navigation
         K("n", "<C-h>", "<C-w><C-h>", { desc = 'Move focus to the left window' })
@@ -78,15 +75,9 @@ return {
     harpoon = function(h)
         K("n", "<leader>qa", h.append, { desc = "Harpoon: [Q]uick [A]ppend"})
         K("n", "<leader>qm", h.toggle_quick_menu, { desc = "Harpoon: [Q]uick [M]enu" })
-        -- K("n", "<C-P>", h.jump_to_previous, {})
-        -- K("n", "<C-N>", h.jump_to_next, {})
-        -- K("n", "<C-1>", h.jump_to(1), {})
-        -- K("n", "<C-2>", h.jump_to(2), {})
-        -- K("n", "<C-3>", h.jump_to(3), {})
-        -- K("n", "<C-4>", h.jump_to(4), {})
     end,
     lazygit = function()
-        K("n", "<leader>gg", vim.cmd.LazyGit)
+        K("n", "<leader>og", vim.cmd.LazyGit, { desc = "Git: [O]pen Lazy[G]it" })
     end,
     none_ls = function()
         K("n", "<leader>cf", function()
@@ -145,9 +136,9 @@ return {
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     end,
     coverage = function()
-        K("n", "<leader>tcs", ":Coverage<CR>", { desc = "[T]est [C]overage [S]how"})
-        K("n", "<leader>tch", ":CoverageClear<CR>", { desc = "[T]est [C]overage [H]ide"})
-        K("n", "<leader>tcr", ":CoverageSummary<CR>", { desc = "[T]est [C]overage [R]eport"})
+        K("n", "<leader>tc", ":Coverage<CR>", { desc = "[T]est [C]overage Show"})
+        K("n", "<leader>th", ":CoverageClear<CR>", { desc = "[T]est Coverage [H]ide"})
+        K("n", "<leader>ts", ":CoverageSummary<CR>", { desc = "[T]est Coverage [S]ummary"})
     end,
     debugger = function(dap, dapui)
         K('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
@@ -162,10 +153,8 @@ return {
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
         K('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
         --
-        -- K("n", "<leader>dk", dap.toggle_breakpoint, {})
-        -- K("n", "<leader>dc", dap.continue, {})
     end,
     go_debugger = function(dap)
-        K("n", "<leader>dt", dap.debug_test, { desc = "GO: [D]ebug [T]est"})
+        K("n", "<leader>td", dap.debug_test, { desc = "GO: [T]est [D]ebug"})
     end,
 }
