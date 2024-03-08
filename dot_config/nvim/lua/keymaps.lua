@@ -86,6 +86,11 @@ return {
       desc = "[D]ocument [U]ndo Tree Toggle",
     })
   end,
+  laravel = function()
+    K("n", "<leader>wla", ":Laravel artisan<CR>", { desc = "[W]orkspace: [L]aravel [A]rtisan" })
+    K("n", "<leader>wlt", ":Laravel routes<CR>", { desc = "[W]orkspace: [L]aravel Rou[T]es" })
+    K("n", "<leader>wlr", ":Laravel related<CR>", { desc = "[W]orkspace: [L]aravel [R]elated" })
+  end,
   lsp = function(opts, builtin)
     local map = function(keys, func, desc)
       K("n", keys, func, { buffer = opts.buffer, desc = "LSP: " .. desc })

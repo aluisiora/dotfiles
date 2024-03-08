@@ -1,12 +1,14 @@
 return {
-  "nvimtools/none-ls.nvim",
-  config = function()
-    local none_ls = require("null-ls")
-    none_ls.setup({
-      sources = {
-        none_ls.builtins.formatting.stylua,
-      },
-    })
+	"nvimtools/none-ls.nvim",
+	config = function()
+		local none_ls = require("null-ls")
+		none_ls.setup({
+			sources = {
+				none_ls.builtins.formatting.stylua,
+				none_ls.builtins.formatting.phpcsfixer,
+				none_ls.builtins.diagnostics.phpstan,
+			},
+		})
     require("keymaps").none_ls()
-  end,
+	end,
 }

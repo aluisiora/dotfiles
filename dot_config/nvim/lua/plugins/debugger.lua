@@ -47,4 +47,5 @@ return {
     require("keymaps").debugger(dap, dapui)
 
     -- Language debuggers
+  end,
 }
