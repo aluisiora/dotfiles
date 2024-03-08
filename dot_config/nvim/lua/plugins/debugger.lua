@@ -6,7 +6,6 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
 
     -- Language debuggers
-    "leoluz/nvim-dap-go",
   },
   config = function()
     local dap = require("dap")
@@ -37,9 +36,7 @@ return {
     require("mason-nvim-dap").setup({
       automatic_setup = true,
       handlers = {},
-      ensure_installed = {
-        "delve",
-      },
+      ensure_installed = {},
     })
 
     dap.listeners.before.attach.dapui_config = dapui.open
@@ -50,10 +47,4 @@ return {
     require("keymaps").debugger(dap, dapui)
 
     -- Language debuggers
-    local dapgo = require("dap-go")
-    dapgo.setup()
-    vim.api.nvim_create_user_command("GoDebugTest", function()
-      dapgo.debug_test()
-    end, {})
-  end,
 }
