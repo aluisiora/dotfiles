@@ -5,12 +5,17 @@ return {
 		none_ls.setup({
 			sources = {
 				none_ls.builtins.formatting.stylua,
-				-- PHP
-				none_ls.builtins.formatting.phpcsfixer,
-				none_ls.builtins.diagnostics.phpstan,
 				-- Javacript
 				none_ls.builtins.formatting.prettier,
-				none_ls.builtins.diagnostics.eslint,
+				-- PHP
+				none_ls.builtins.formatting.phpcsfixer.with({
+					prefer_local = "vendor/bin/php-cs-fixer"
+				}),
+				none_ls.builtins.diagnostics.phpstan.with({
+					temp_dir = "/tmp",
+					prefer_local = "vendor/bin/phpstan",
+					method = none_ls.methods.DIAGNOSTICS_ON_SAVE,
+				}),
 			},
 		})
     require("keymaps").none_ls()
