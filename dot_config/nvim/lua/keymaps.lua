@@ -68,8 +68,8 @@ return {
         end, { desc = '[S]earch [N]eovim files' })
     end,
     neo_tree = function()
-        K("n", "<leader>ft", ":Neotree filesystem toggle left<CR>", {
-            desc = "[F]ilesystem [T]oggle"
+        K("n", "<leader>wf", ":Neotree filesystem toggle left<CR>", {
+            desc = "[W]orkspace [F]iletree"
         })
     end,
     harpoon = function(h)
