@@ -1,20 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- vim.opt.isfname:append("@-@")
--- vim.opt.backspace = { "start", "eol", "indent" }
-
--- vim.opt.path:append({ "**" })
--- vim.opt.wildignore:append({ "*/node_modules/*", "*/vendor/*" })
-
 -- Nerd Font is installed
 vim.g.have_nerd_font = true
-
--- Convert tabs to spaces
--- vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.expandtab = true
 
 -- Show line numbers as default
 vim.opt.number = true
@@ -63,8 +51,8 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- Sets how neovim will display certain whitespace in the editor.
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Decrease update time
 vim.opt.updatetime = 250

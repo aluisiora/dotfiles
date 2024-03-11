@@ -1,7 +1,6 @@
 return {
-    "mbbill/undotree",
-    config = function()
-        require("keymaps").undotree()
-    end
+  "mbbill/undotree",
+  config = function()
+    require("keymaps").undotree()
+  end,
 }
-
