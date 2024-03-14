@@ -28,7 +28,7 @@ vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 
 -- Sync clipboard between OS and Neovim
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
