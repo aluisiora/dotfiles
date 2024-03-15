@@ -76,12 +76,6 @@ return {
     K("n", "<leader>da", h.append, { desc = "Harpoon: [D]ocument [A]ppend" })
     K("n", "<leader>dm", h.toggle_quick_menu, { desc = "Harpoon: [D]ocument List [M]enu" })
   end,
-  lazygit = function()
-    K("n", "<leader>og", vim.cmd.LazyGit, { desc = "[O]pen Lazy[G]it" })
-  end,
-  lazydocker = function()
-    K("n", "<leader>od", vim.cmd.LazyDocker, { desc = "[O]pen Lazy[D]ocker" })
-  end,
   none_ls = function()
     K("n", "<leader>df", function()
       vim.lsp.buf.format({ async = true })
