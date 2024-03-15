@@ -20,120 +20,123 @@ return {
     K("n", "N", "Nzzzv")
 
     -- Split navigation
-    K("n", "<C-h>", "<C-w><C-h>", { desc = 'Move focus to the left window' })
-    K("n", "<C-l>", "<C-w><C-l>", { desc = 'Move focus to the right window' })
-    K("n", "<C-j>", "<C-w><C-j>", { desc = 'Move focus to the lower window' })
-    K("n", "<C-k>", "<C-w><C-k>", { desc = 'Move focus to the upper window' })
+    K("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+    K("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+    K("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+    K("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
     -- Prevent accidental quits
     K("n", "Q", "<nop>")
 
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    K('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-    K('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-    K('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-    K('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+    K("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+    K("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+    K("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+    K("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
   end,
   telescope = function(builtin)
-    K('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    K('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    K('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    K('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-    K('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    K('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    K('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    K('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    K('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    K('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    K("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+    K("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+    K("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+    K("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+    K("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+    K("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+    K("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    K("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+    K("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+    K("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
-    K('n', '<leader>/', function()
-      local dropdown = require('telescope.themes').get_dropdown({
+    K("n", "<leader>/", function()
+      local dropdown = require("telescope.themes").get_dropdown({
         winblend = 10,
         previewer = false,
       })
       builtin.current_buffer_fuzzy_find(dropdown)
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, { desc = "[/] Fuzzily search in current buffer" })
 
-    K('n', '<leader>s/', function()
+    K("n", "<leader>s/", function()
       builtin.live_grep({
         grep_open_files = true,
-        prompt_title = 'Live Grep in Open Files',
+        prompt_title = "Live Grep in Open Files",
       })
-    end, { desc = '[S]earch [/] in Open Files' })
+    end, { desc = "[S]earch [/] in Open Files" })
 
-    K('n', '<leader>sn', function()
+    K("n", "<leader>sn", function()
       builtin.find_files({
-        cwd = vim.fn.stdpath('config'),
+        cwd = vim.fn.stdpath("config"),
       })
-    end, { desc = '[S]earch [N]eovim files' })
+    end, { desc = "[S]earch [N]eovim files" })
   end,
   neo_tree = function()
     K("n", "<leader>wf", ":Neotree filesystem toggle left<CR>", {
-      desc = "[W]orkspace [F]iletree"
+      desc = "[W]orkspace [F]iletree",
     })
   end,
   harpoon = function(h)
-    K("n", "<leader>qa", h.append, { desc = "Harpoon: [Q]uick [A]ppend" })
-    K("n", "<leader>qm", h.toggle_quick_menu, { desc = "Harpoon: [Q]uick [M]enu" })
+    K("n", "<leader>da", h.append, { desc = "Harpoon: [D]ocument [A]ppend" })
+    K("n", "<leader>dm", h.toggle_quick_menu, { desc = "Harpoon: [D]ocument List [M]enu" })
   end,
   lazygit = function()
     K("n", "<leader>og", vim.cmd.LazyGit, { desc = "[O]pen Lazy[G]it" })
   end,
+  lazydocker = function()
+    K("n", "<leader>od", vim.cmd.LazyDocker, { desco = "[O]pen Lazy[D]ocker" })
+  end,
   none_ls = function()
-    K("n", "<leader>cf", function()
+    K("n", "<leader>df", function()
       vim.lsp.buf.format({ async = true })
-    end, { desc = "[C]ode [F]ormat" })
+    end, { desc = "[D]ocument [F]ormat" })
   end,
   undotree = function()
-    K("n", "<leader>ut", vim.cmd.UndotreeToggle, {
-      desc = '[U]ndo [T]oggle',
+    K("n", "<leader>du", vim.cmd.UndotreeToggle, {
+      desc = "[D]ocument [U]ndo Tree Toggle",
     })
   end,
   lsp = function(opts, builtin)
     local map = function(keys, func, desc)
-      K('n', keys, func, { buffer = opts.buffer, desc = 'LSP: ' .. desc })
+      K("n", keys, func, { buffer = opts.buffer, desc = "LSP: " .. desc })
     end
 
     -- Jump to the definition of the word under your cursor.
     --  This is where a variable was first declared, or where a function is defined, etc.
     --  To jump back, press <C-T>.
-    map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
+    map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
 
     -- Find references for the word under your cursor.
-    map('gr', builtin.lsp_references, '[G]oto [R]eferences')
+    map("gr", builtin.lsp_references, "[G]oto [R]eferences")
 
     -- Jump to the implementation of the word under your cursor.
     --  Useful when your language has ways of declaring types without an actual implementation.
-    map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
+    map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
 
     -- Jump to the type of the word under your cursor.
     --  Useful when you're not sure what type a variable is and you want to see
     --  the definition of its *type*, not where it was *defined*.
-    map('<leader>D', builtin.lsp_type_definitions, 'Type [D]efinition')
+    map("<leader>D", builtin.lsp_type_definitions, "Type [D]efinition")
 
     -- Fuzzy find all the symbols in your current document.
     --  Symbols are things like variables, functions, types, etc.
-    map('<leader>ds', builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
+    map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
 
     -- Fuzzy find all the symbols in your current workspace
     --  Similar to document symbols, except searches over your whole project.
-    map('<leader>ws', builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
     -- Rename the variable under your cursor
     --  Most Language Servers support renaming across files, etc.
-    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 
     -- Execute a code action, usually your cursor needs to be on top of an error
     -- or a suggestion from your LSP for this to activate.
-    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
     -- Opens a popup that displays documentation about the word under your cursor
     --  See `:help K` for why this keymap
-    map('K', vim.lsp.buf.hover, 'Hover Documentation')
+    map("K", vim.lsp.buf.hover, "Hover Documentation")
 
     -- WARN: This is not Goto Definition, this is Goto Declaration.
     --  For example, in C this would take you to the header
-    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
   end,
   coverage = function()
     K("n", "<leader>tc", ":Coverage<CR>", { desc = "[T]est [C]overage Show" })
@@ -141,17 +144,17 @@ return {
     K("n", "<leader>ts", ":CoverageSummary<CR>", { desc = "[T]est Coverage [S]ummary" })
   end,
   debugger = function(dap, dapui)
-    K('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    K('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    K('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    K('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    K('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    K('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    K("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
+    K("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
+    K("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
+    K("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
+    K("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+    K("n", "<leader>B", function()
+      dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+    end, { desc = "Debug: Set Breakpoint" })
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    K('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    K("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result." })
     --
   end,
 }
