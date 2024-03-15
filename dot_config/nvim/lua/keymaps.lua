@@ -80,7 +80,7 @@ return {
     K("n", "<leader>og", vim.cmd.LazyGit, { desc = "[O]pen Lazy[G]it" })
   end,
   lazydocker = function()
-    K("n", "<leader>od", vim.cmd.LazyDocker, { desco = "[O]pen Lazy[D]ocker" })
+    K("n", "<leader>od", vim.cmd.LazyDocker, { desc = "[O]pen Lazy[D]ocker" })
   end,
   none_ls = function()
     K("n", "<leader>df", function()
