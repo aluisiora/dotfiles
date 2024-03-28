@@ -20,10 +20,10 @@ config.scrollback_lines = 6000
 config.native_macos_fullscreen_mode = true
 
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 4,
+	right = 1,
+	top = 5,
+	bottom = 1,
 }
 
 -- and finally, return the configuration to wezterm
