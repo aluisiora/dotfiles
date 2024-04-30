@@ -1,0 +1,40 @@
+# Environment variables
+export LANG=en_US.UTF-8
+
+# Command aliases
+alias ll="ls -lah"
+alias v="nvim ."
+
+if [ -f $HOME/.local/aliases ]; then
+	source $HOME/.local/aliases
+fi
+
+# ASDF VM
+if ! [ -d $HOME/.asdf ]; then
+	ASDF_REPO=https://github.com/asdf-vm/asdf.git
+	git clone --no-checkout $ASDF_REPO $HOME/.asdf
+	cd $HOME/.asdf
+	git fetch --tags
+	LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+	git checkout $LATEST_TAG
+	cd $HOME
+fi
+source $HOME/.asdf/asdf.sh
+
+# Plugins
+if ! [ -d $HOME/.zsh/zsh-autosuggestions ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
+fi
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+if ! [ -d $HOME/.zsh/zsh-syntax-highlighting ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+fi
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Starship configuration
+if ! which starship > /dev/null; then
+	curl -sS https://starship.rs/install.sh | sh
+fi
+
+eval "$(starship init zsh)"
