@@ -1,5 +1,6 @@
 # Environment variables
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Command aliases
 alias ll="ls -lah"
