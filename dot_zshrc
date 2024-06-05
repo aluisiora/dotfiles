@@ -37,7 +37,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Keybindings
-bindkey -s '^E' "bash ~/.tmux-sessionizer\n"
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
