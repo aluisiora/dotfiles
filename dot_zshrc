@@ -1,25 +1,89 @@
-# General
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Keymaps
-bindkey -s ^O "bash ~/.tmux-sessionizer\n"
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download zinit, if it's not there yet
+if [ ! -d $ZINIT_HOME ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add plugins
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light jeffreytse/zsh-vi-mode
+zinit light Aloxaf/fzf-tab
+
+# Add snippets
+zinit snippet OMZP::sudo
+zinit snippet OMZP::git
+zinit snippet OMZP::asdf
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -U compinit && compinit
+zinit cdreplay -q
+
+# Completions styling
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Environment variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Command aliases
-alias ll="ls -lah"
+# Keybindings
+bindkey -s '^E' "bash ~/.tmux-sessionizer\n"
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History
+HISTSIZE=5000
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Aliases
+alias ls='ls --color'
+alias ll="ls -lah --color"
 alias v="nvim ."
 
 if [ -f $HOME/.local/aliases ]; then
 	source $HOME/.local/aliases
 fi
 
-# ASDF VM
+# Extra CLI apps
+if [[ $(uname) != "Darwin" ]]; then
+  # Homebrew for Linux
+  if [[ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    sudo ln -s /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew
+  fi
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# asdf vm
 if ! [ -d $HOME/.asdf ]; then
 	ASDF_REPO=https://github.com/asdf-vm/asdf.git
 	git clone --no-checkout $ASDF_REPO $HOME/.asdf
@@ -31,20 +95,5 @@ if ! [ -d $HOME/.asdf ]; then
 fi
 source $HOME/.asdf/asdf.sh
 
-# Plugins
-if ! [ -d $HOME/.zsh/zsh-autosuggestions ]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
-fi
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-if ! [ -d $HOME/.zsh/zsh-syntax-highlighting ]; then
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
-fi
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Starship configuration
-if ! which starship > /dev/null; then
-	curl -sS https://starship.rs/install.sh | sh
-fi
-
-eval "$(starship init zsh)"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
