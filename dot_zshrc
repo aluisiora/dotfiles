@@ -56,9 +56,10 @@ setopt hist_find_no_dups
 alias ls='ls --color'
 alias ll="ls -lah --color"
 alias v="nvim ."
+alias p="$HOME/.tmux-sessionizer"
 
-if [ -f $HOME/.local/aliases ]; then
-	source $HOME/.local/aliases
+if [ -f $HOME/.zshrc_local ]; then
+	source $HOME/.zshrc_local
 fi
 
 # Extra CLI apps
