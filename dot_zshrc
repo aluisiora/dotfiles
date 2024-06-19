@@ -57,19 +57,34 @@ alias ls='ls --color'
 alias ll="ls -lah --color"
 alias v="nvim ."
 alias p="$HOME/.tmux-sessionizer"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 if [ -f $HOME/.zshrc_local ]; then
 	source $HOME/.zshrc_local
 fi
 
 # Extra CLI apps
-if [[ $(uname) != "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
+  if [[ ! -f /opt/homebrew/bin/brew ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  if ! which starship > /dev/null; then
+    brew install starship
+  fi
+else
   # Homebrew for Linux
   if [[ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     sudo ln -s /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew
   fi
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  # Starship
+  if ! which starship > /dev/null; then
+    curl -sS https://starship.rs/install.sh | sh
+  fi
 fi
 
 # asdf vm
@@ -86,10 +101,5 @@ source $HOME/.asdf/asdf.sh
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
-# Starship configuration
-if ! which starship > /dev/null; then
-        curl -sS https://starship.rs/install.sh | sh
-fi
 
 eval "$(starship init zsh)"
