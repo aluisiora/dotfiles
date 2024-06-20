@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ ! -d .git ]]; then
+    echo "Not in a git repository!"
+    exit 1
+fi
+
+git branch --sort=-committerdate | while read branch; do
+    if [ -z "$(git log -1 --since='30 days ago' -s $branch)" ]; then
+        git branch -D $branch
+    fi
+done
+

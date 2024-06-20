@@ -35,6 +35,7 @@ zstyle ':completion:*' menu no
 # Environment variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH="$PATH:$HOME/.local/bin"
 
 # Keybindings
 bindkey '^p' history-search-backward
@@ -56,48 +57,19 @@ setopt hist_find_no_dups
 alias ls='ls --color'
 alias ll="ls -lah --color"
 alias v="nvim ."
-alias p="$HOME/.tmux-sessionizer"
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias ts="tmux-sessionizer"
 
 if [ -f $HOME/.zshrc_local ]; then
-	source $HOME/.zshrc_local
+  source $HOME/.zshrc_local
 fi
 
-# Extra CLI apps
+install-cli-apps
+
 if [[ $(uname) == "Darwin" ]]; then
-  if [[ ! -f /opt/homebrew/bin/brew ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
   eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  if ! which starship > /dev/null; then
-    brew install starship
-  fi
 else
-  # Homebrew for Linux
-  if [[ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    sudo ln -s /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew
-  fi
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-  # Starship
-  if ! which starship > /dev/null; then
-    curl -sS https://starship.rs/install.sh | sh
-  fi
 fi
-
-# asdf vm
-if ! [ -d $HOME/.asdf ]; then
-	ASDF_REPO=https://github.com/asdf-vm/asdf.git
-	git clone --no-checkout $ASDF_REPO $HOME/.asdf
-	cd $HOME/.asdf
-	git fetch --tags
-	LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-	git checkout $LATEST_TAG
-	cd $HOME
-fi
-source $HOME/.asdf/asdf.sh
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
