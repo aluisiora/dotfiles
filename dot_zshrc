@@ -46,6 +46,7 @@ zstyle ':completion:*' menu no
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$PATH:$HOME/.local/bin"
+export HOMEBREW_AUTO_UPDATE_SECS=86400
 
 # Keybindings
 bindkey '^p' history-search-backward
