@@ -6,7 +6,7 @@ TERM = "xterm-256color"
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Light" }
 bold = { style = "SemiBold" }
-size = 13
+size = 12
 
 [mouse]
 hide_when_typing = true
