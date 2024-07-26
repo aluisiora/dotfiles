@@ -15,20 +15,30 @@ zinit ice depth=1
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light jeffreytse/zsh-vi-mode
+# zinit light jeffreytse/zsh-vi-mode
 zinit light Aloxaf/fzf-tab
 
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
 # Add snippets
-zinit snippet OMZP::sudo
-zinit snippet OMZP::git
 zinit snippet OMZP::asdf
-zinit snippet OMZP::command-not-found
+
+zinit ice lucid wait
+zinit snippet OMZP::fzf
+
+zi ice as"completion"
+zi snippet OMZP::docker/completions/_docker
 
 # Load completions
 autoload -U compinit && compinit
 zinit cdreplay -q
 
 # Completions styling
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
@@ -40,6 +50,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # Keybindings
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey -s '^O' 'tmux-sessionizer^M'
 
 # History
 HISTSIZE=5000
@@ -54,7 +65,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Aliases
-alias ls='ls --color'
+alias ls="ls --color"
 alias ll="ls -lah --color"
 alias v="nvim ."
 alias ts="tmux-sessionizer"
@@ -70,8 +81,3 @@ if [[ $(uname) == "Darwin" ]]; then
 else
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-eval "$(starship init zsh)"
