@@ -15,7 +15,6 @@ zinit ice depth=1
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-# zinit light jeffreytse/zsh-vi-mode
 zinit light Aloxaf/fzf-tab
 
 zinit ice as"command" from"gh-r" \
@@ -47,11 +46,13 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$PATH:$HOME/.local/bin"
 export HOMEBREW_AUTO_UPDATE_SECS=86400
+export KEYTIMEOUT=1
+
+# vi mode
+bindkey -v
 
 # Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey -s '^O' 'tmux-sessionizer^M'
+bindkey -s '^e' 'tmux-sessionizer^M'
 
 # History
 HISTSIZE=5000
