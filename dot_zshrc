@@ -43,12 +43,6 @@ export PATH="$PATH:$HOME/.local/bin"
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 export KEYTIMEOUT=1
 
-# vi mode
-bindkey -v
-
-# Keybindings
-bindkey -s '^e' 'tmux-sessionizer^M'
-
 # History
 HISTSIZE=5000
 HISTFILE=$HOME/.zsh_history
@@ -82,3 +76,10 @@ fi
 # Set custom prompt theme
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
+
+# vi mode
+bindkey -v
+
+# Keybindings
+bindkey -s '^e' 'tmux-sessionizer^M'
+
