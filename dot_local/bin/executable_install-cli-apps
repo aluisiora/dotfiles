@@ -28,10 +28,6 @@ macos_install() {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    if ! which starship > /dev/null; then
-        brew install starship
-    fi
 }
 
 linux_install() {
@@ -40,10 +36,6 @@ linux_install() {
         sudo ln -s /home/linuxbrew/.linuxbrew/bin/brew /usr/local/bin/brew
     fi
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-    if ! which starship > /dev/null; then
-        curl -sS https://starship.rs/install.sh | sh
-    fi
 }
 
 brew_apps() {
