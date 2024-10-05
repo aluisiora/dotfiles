@@ -1,10 +1,8 @@
 import = []
-live_config_reload = false
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Light" }
-bold = { style = "SemiBold" }
-size = 12
+normal = { family = "MonaspiceNe Nerd Font" }
+size = 12.75
 
 [mouse]
 hide_when_typing = true
