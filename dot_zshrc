@@ -1,5 +1,18 @@
+# Environment variables
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
+
 # Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
 # Download zinit, if it's not there yet
 if [ ! -d $ZINIT_HOME ]; then
@@ -10,6 +23,25 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# History
+HISTSIZE=5000
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Homebrew
+if [ -f /opt/homebrew/bin/brew ]; then
+  export HOMEBREW_AUTO_UPDATE_SECS=86400
+  export KEYTIMEOUT=1
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Add plugins
 zinit ice depth=1
 zinit light zsh-users/zsh-syntax-highlighting
@@ -18,7 +50,11 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add snippets
-zinit snippet OMZP::asdf
+if [ ! -d $ZSH_CACHE_DIR/completions ]; then
+  mkdir -p $ZSH_CACHE_DIR/completions
+fi
+
+zinit snippet OMZP::mise
 
 zinit ice lucid wait
 zinit snippet OMZP::fzf
@@ -36,41 +72,13 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-# Environment variables
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export PATH="$PATH:$HOME/.local/bin"
-export HOMEBREW_AUTO_UPDATE_SECS=86400
-export KEYTIMEOUT=1
-
-# History
-HISTSIZE=5000
-HISTFILE=$HOME/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
 # Aliases
 alias ls="ls --color"
 alias ll="ls -lah --color"
 alias v="nvim ."
-alias ts="tmux-sessionizer"
 
 if [ -f $HOME/.zshrc_local ]; then
   source $HOME/.zshrc_local
-fi
-
-install-cli-apps
-
-if [[ $(uname) == "Darwin" ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Set custom prompt theme
