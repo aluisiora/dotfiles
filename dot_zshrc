@@ -1,4 +1,4 @@
-# Environment variables
+# System environment variables
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -75,7 +75,7 @@ zstyle ':completion:*' menu no
 # Aliases
 alias ls="ls --color"
 alias ll="ls -lah --color"
-alias v="nvim ."
+alias v="nvim"
 
 if [ -f $HOME/.zshrc_local ]; then
   source $HOME/.zshrc_local
@@ -90,4 +90,3 @@ bindkey -v
 
 # Keybindings
 bindkey -s '^e' 'tmux-sessionizer^M'
-
