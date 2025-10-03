@@ -26,7 +26,7 @@ setopt hist_find_no_dups
 zinit ice depth=1
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-# zinit light Aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab
 
 # Load completions
 autoload -U compinit && compinit
@@ -37,8 +37,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # Aliases
-alias ls="ls --color"
-alias ll="ls -lah --color"
+alias ls="ls --color=auto"
+alias ll="ls -lah --color=auto"
 
 if [ -f $HOME/.zshrc_local ]; then
   source $HOME/.zshrc_local
@@ -55,19 +55,13 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'tmux-sessionizer^M'
 
-# evals
-if [[ -x "$(command -v zoxide)" ]]; then
-    eval "$(zoxide init zsh)"
-fi
-if [[ -x "$(command -v fzf)" ]]; then
-    eval "$(fzf --zsh)"
-fi
-if [[ -x "$(command -v carapace)" ]]; then
-    export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-    source <(carapace _carapace)
-fi
-
-# NVM
+# Extra envs
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# evals
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
+[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
+[ -x "$(command -v carapace)" ] && source <(carapace _carapace)
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
