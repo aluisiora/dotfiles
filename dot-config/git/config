@@ -1,0 +1,62 @@
+[include]
+    path = ./config.private
+[user]
+	name = Aluisio Amaral
+[core]
+    editor = nvim
+    compression = 9
+    whitespace = error
+    preloadindex = true
+[init]
+        defaultBranch = main
+[branch]
+    sort = -committerdate
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+[diff]
+    context = 3
+    renames = copies
+    interHunkContext = 10
+[push]
+        autoSetupRemote = true
+    default = current
+    followTags = true
+[pull]
+    default = current
+    rebase = true
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn
+[tag]
+    sort = -taggerdate
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+    statusHints = false
+[pager]
+    diff = diff-so-fancy | $PAGER
+    branch = false
+    tag = false
+[diff-so-fancy]
+    markEmptyLines = false
+[log]
+    graphColors = blue,yellow,cyan,magenta,green,red
+[color "diff"]
+    meta = black bold
+    frag = magenta
+    context = white
+    whitespace = yellow reverse
+    old = red
+[color "decorate"]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+[color "branch"]
+    current = magenta
+    local = default
+    remote = yellow
+    upstream = green
+    plain = blue

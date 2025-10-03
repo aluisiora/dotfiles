@@ -1,0 +1,89 @@
+{
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./apple-studio-display.nix
+    ../../nixosModules
+  ];
+
+  # Custom modules
+  desktop.enable = true;
+  developmentUtils.enable = true;
+
+  # DisplayManager
+  services.displayManager.ly.enable = true;
+
+  # DE
+  programs.niri.enable = true;
+  programs.niri.dms.enable = true;
+
+  # System config
+  nixpkgs.config.allowUnfree = true;
+  networking.hostName = "ocelot";
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-l2tp
+      networkmanager-openvpn
+      networkmanager-strongswan
+    ];
+  };
+  programs.openvpn3.enable = true;
+  services.strongswan = {
+    enable = true;
+    secrets = [
+      "ipsec.d/ipsec.nm-l2tp.secrets"
+    ];
+  };
+  services.xl2tpd.enable = true;
+  time.timeZone = "America/Sao_Paulo";
+  i18n.defaultLocale = "en_US.UTF-8";
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    wireplumber.enable = true;
+  };
+  security.rtkit.enable = true;
+  services.libinput.enable = true;
+  services.openssh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  users.users.aluisio = {
+    description = "Aluisio Amaral";
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "input"
+      "docker"
+    ];
+  };
+  nix.settings.trusted-users = [
+    "root"
+    "aluisio"
+  ];
+  environment.systemPackages = with pkgs; [
+    google-chrome
+    slack
+    distrobox
+  ];
+  programs.zsh = {
+    enable = true;
+    enableGlobalCompInit = false;
+  };
+  programs.nix-ld.enable = true;
+  programs.direnv.enable = true;
+  programs.direnv.silent = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  system.stateVersion = "25.05";
+}

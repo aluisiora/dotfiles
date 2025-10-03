@@ -1,0 +1,21 @@
+<monitors version="2">
+  <configuration>
+    <logicalmonitor>
+      <scale>2</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-3</connector>
+          <vendor>APP</vendor>
+          <product>StudioDisplay</product>
+          <serial>0x94d6e2a7</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>2880</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+</monitors>

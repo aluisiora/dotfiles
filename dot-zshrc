@@ -1,0 +1,73 @@
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+
+# Download zinit, if it's not there yet
+if [ ! -d $ZINIT_HOME ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# History
+HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Add plugins
+zinit ice depth=1
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+# zinit light Aloxaf/fzf-tab
+
+# Load completions
+autoload -U compinit && compinit
+zinit cdreplay -q
+
+# Completions style
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+# Aliases
+alias ls="ls --color"
+alias ll="ls -lah --color"
+
+if [ -f $HOME/.zshrc_local ]; then
+  source $HOME/.zshrc_local
+fi
+
+# Set custom prompt theme
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+
+# Keybindings
+bindkey -v # vi mode
+bindkey '^y' autosuggest-accept
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey -s '^e' 'tmux-sessionizer^M'
+
+# evals
+if [[ -x "$(command -v zoxide)" ]]; then
+    eval "$(zoxide init zsh)"
+fi
+if [[ -x "$(command -v fzf)" ]]; then
+    eval "$(fzf --zsh)"
+fi
+if [[ -x "$(command -v carapace)" ]]; then
+    export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+    source <(carapace _carapace)
+fi
+
+# NVM
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
