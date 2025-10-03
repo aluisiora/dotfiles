@@ -11,6 +11,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # History
+[ ! -d "$XDG_STATE_HOME/zsh" ] && mkdir $XDG_STATE_HOME/zsh
 HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
