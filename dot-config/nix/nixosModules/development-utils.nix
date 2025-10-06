@@ -50,6 +50,7 @@
       carapace
       tldr
       zoxide
+      posting
     ];
   };
 }
