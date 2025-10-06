@@ -65,6 +65,7 @@
       xdg-user-dirs
       xdg-user-dirs-gtk
       wev
+      bluetui
     ];
   };
 }
