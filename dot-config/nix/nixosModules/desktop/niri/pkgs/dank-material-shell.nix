@@ -6,13 +6,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "dank-material-shell";
-  version = "e6296f20b9c0ac044beb0d09b8af736db0ce10f5";
+  version = "e24ddb804da7482af9db1b6893209fc47a43b753";
 
   src = fetchFromGitHub {
     owner = "AvengeMedia";
     repo = "DankMaterialShell";
     rev = "${version}";
-    sha256 = "sha256-vT7laGgjhSCgJ7aO42TnegK2SkJk+B7pJGTq/XGXgkk=";
+    sha256 = "sha256-am7/XCvi6epD6I88o+o9tgOyfkrnmBTXM10uMpCbz58=";
   };
 
   installPhase = ''
