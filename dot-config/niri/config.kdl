@@ -3,6 +3,10 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
@@ -21,6 +25,8 @@ input {
             // localectl set-x11-keymap.
         }
 
+        track-layout "window"
+
         // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
@@ -31,27 +37,28 @@ input {
     touchpad {
         // off
         // tap
-        // dwt
+        dwt
         // dwtp
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        accel-speed 0.3
+        accel-profile "adaptive"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
+        scroll-factor horizontal=1.0 vertical=-2.0
     }
 
     mouse {
-        // off
+        off
         // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        // accel-speed 0.6
+        // accel-profile "adaptive"
         // scroll-method "no-scroll"
     }
 
     trackpoint {
-        // off
+        off
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
@@ -59,6 +66,11 @@ input {
         // scroll-button 273
         // scroll-button-lock
         // middle-emulation
+    }
+
+    trackball {
+        accel-speed 0.06
+        accel-profile "adaptive"
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
@@ -324,16 +336,43 @@ animations {
     slowdown 0.5
 }
 
+// Workspaces
+workspace "browser"
+workspace "social"
+workspace "coding"
+workspace "music"
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
-
-// GLOBAL RULES
-// Rounded corners
+// Global window rounded corners
 window-rule {
-    // geometry-corner-radius 12
+    geometry-corner-radius 8
     clip-to-geometry true
+}
+
+// Pin apps to workspaces
+window-rule {
+    match app-id=r#"chrome-"# title="^Google Calendar"
+    match app-id=r#"chrome-"# title="^Google Meet"
+    match app-id="Slack"
+    open-on-workspace "social"
+}
+window-rule {
+    match app-id="google-chrome"
+    open-on-workspace "browser"
+}
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    match app-id="org.wezfurlong.wezterm"
+    match app-id=r#"firefox"#
+    match app-id="Chromium-browser"
+    open-on-workspace "coding"
+}
+window-rule {
+    match app-id=r#"YouTube Music"#
+    open-on-workspace "music"
 }
 
 // Mark screencasted window
@@ -351,14 +390,14 @@ window-rule {
     }
 }
 
-// APP RULES
+// Select computer file
 window-rule {
     match app-id="org.gnome.Nautilus" title="^Open Files$"
     open-floating true
 }
 
+// Playwright browsers
 window-rule {
-    // Playwright chromium browser
     match app-id="Chromium-browser"
     open-floating true
     open-focused false
@@ -370,16 +409,11 @@ window-rule {
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-
+// Block out two password managers from screen capture.
 window-rule {
     match app-id="org.gnome.World.Secrets"
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
@@ -387,21 +421,11 @@ window-rule {
     open-floating true
 }
 
+// Block slack from screen capture
 window-rule {
     match app-id="Slack"
     block-out-from "screen-capture"
 }
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-/-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id="org.wezfurlong.wezterm"
-    default-column-width {}
-}
-
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -599,6 +623,16 @@ binds {
     Super+Shift+7 { move-column-to-workspace 7; }
     Super+Shift+8 { move-column-to-workspace 8; }
     Super+Shift+9 { move-column-to-workspace 9; }
+
+    // Named workspaces
+    Super+s { focus-workspace "social"; }
+    Super+Shift+s { move-column-to-workspace "social"; }
+    Super+b { focus-workspace "browser"; }
+    Super+Shift+b { move-column-to-workspace "browser"; }
+    Super+t { focus-workspace "coding"; }
+    Super+Shift+t { move-column-to-workspace "coding"; }
+    Super+m { focus-workspace "music"; }
+    Super+Shift+m { move-column-to-workspace "music"; }
 
     // Alternatively, there are commands to move just a single window:
     // Super+Ctrl+1 { move-window-to-workspace 1; }
