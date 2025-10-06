@@ -296,6 +296,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 spawn-at-startup "dms-shell"
+spawn-at-startup "ghostty"
+spawn-at-startup "google-chrome-stable"
+spawn-at-startup "slack"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -375,6 +378,26 @@ window-rule {
     open-on-workspace "music"
 }
 
+// Maximized apps
+window-rule {
+    match app-id="google-chrome"
+    match app-id=r#"YouTube Music"#
+    match app-id="com.mitchellh.ghostty"
+    match app-id="org.wezfurlong.wezterm"
+    match app-id="Slack"
+    open-maximized true
+}
+
+// Floating apps
+window-rule {
+    match app-id="org.gnome.Nautilus" title="^Open Files$" // Select computer file
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="org.gnome.Calculator"
+    match app-id="org.gnome.World.Secrets"
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    open-floating true
+}
+
 // Mark screencasted window
 window-rule {
     match is-window-cast-target=true
@@ -390,12 +413,6 @@ window-rule {
     }
 }
 
-// Select computer file
-window-rule {
-    match app-id="org.gnome.Nautilus" title="^Open Files$"
-    open-floating true
-}
-
 // Playwright browsers
 window-rule {
     match app-id="Chromium-browser"
@@ -407,22 +424,10 @@ window-rule {
     opacity 0.5
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Block out two password managers from screen capture.
+// Block out two password managers from screen capture and slack.
 window-rule {
     match app-id="org.gnome.World.Secrets"
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    block-out-from "screen-capture"
-    open-floating true
-}
-
-// Block slack from screen capture
-window-rule {
     match app-id="Slack"
     block-out-from "screen-capture"
 }
