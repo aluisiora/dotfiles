@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # TODO: create flakes and move these external inputs
     lanzaboote.url = "github:nix-community/lanzaboote";
     quickshell = {
@@ -21,7 +25,9 @@
 
   outputs =
     {
+      self,
       nixpkgs,
+      nix-darwin,
       ...
     }@inputs:
     {
@@ -29,6 +35,11 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [ ./hosts/ocelot/configuration.nix ];
+      };
+
+      darwinConfigurations.snake = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/snake/configuration.nix ];
       };
     };
 }

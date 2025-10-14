@@ -163,6 +163,27 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760338583,
+        "narHash": "sha256-IGwy02SH5K2hzIFrKMRsCmyvwOwWxrcquiv4DbKL1S4=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "9a9ab01072f78823ca627ae5e895e40d493c3ecf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754243818,
@@ -267,6 +288,7 @@
         "caelestia": "caelestia",
         "dgop": "dgop",
         "lanzaboote": "lanzaboote",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "quickshell": "quickshell_2"
       }

@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./apple-studio-display.nix
     ../../nixosModules
+    ../../modules
   ];
 
   # Custom modules
@@ -21,7 +22,6 @@
   programs.niri.dms.enable = true;
 
   # System config
-  nixpkgs.config.allowUnfree = true;
   networking.hostName = "ocelot";
   networking.networkmanager = {
     enable = true;
@@ -76,11 +76,6 @@
     enable = true;
     enableGlobalCompInit = false;
   };
-  programs.nix-ld.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.silent = true;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
