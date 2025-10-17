@@ -32,6 +32,7 @@
       ripgrep
       rsync
       diff-so-fancy
+      difftastic
       carapace
       tldr
       zoxide
