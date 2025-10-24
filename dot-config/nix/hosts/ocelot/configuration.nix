@@ -8,18 +8,11 @@
     ./apple-studio-display.nix
     ../../nixosModules
     ../../modules
+    ../../modules/development/linux.nix
   ];
 
   # Custom modules
-  desktop.enable = true;
-  developmentUtils.enable = true;
-
-  # DisplayManager
-  services.displayManager.ly.enable = true;
-
-  # DE
-  programs.niri.enable = true;
-  programs.niri.dms.enable = true;
+  development.enable = true;
 
   # System config
   networking.hostName = "ocelot";

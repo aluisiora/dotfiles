@@ -5,11 +5,9 @@
   ...
 }:
 {
-  options = {
-    developmentUtils.enable = lib.mkEnableOption "development utilities";
-  };
+  imports = [ ./common.nix ];
 
-  config = lib.mkIf config.developmentUtils.enable {
+  config = lib.mkIf config.development.enable {
     environment.variables = {
       DBX_CONTAINER_MANAGER = "docker";
     };

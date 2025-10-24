@@ -1,7 +1,11 @@
-{ pkgs, inputs, ... }: {
-  imports = [ ../../modules ];
+{ inputs, ... }:
+{
+  imports = [
+    ../../modules
+    ../../modules/development/darwin.nix
+  ];
 
-  developmentUtils.enable = true;
+  development.enable = true;
 
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
@@ -15,7 +19,10 @@
 
   nix.gc = {
     automatic = true;
-    interval = { Hour = 0; Minute = 0; };
+    interval = {
+      Hour = 0;
+      Minute = 0;
+    };
     options = "--delete-older-than 14d";
   };
 

@@ -6,10 +6,10 @@
 }:
 {
   options = {
-    developmentUtils.enable = lib.mkEnableOption "development utilities";
+    development.enable = lib.mkEnableOption "development utilities";
   };
 
-  config = lib.mkIf config.developmentUtils.enable {
+  config = lib.mkIf config.development.enable {
     programs.direnv.enable = true;
     programs.direnv.silent = true;
     environment.systemPackages = with pkgs; [

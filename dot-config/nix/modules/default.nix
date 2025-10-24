@@ -3,10 +3,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    ./development-utils.nix
-  ];
-
   environment.variables = {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
