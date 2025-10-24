@@ -1,2 +1,5 @@
 spacing: standard
 theme: rose-pine
+heading:
+  visible: true
+  show_host: false
