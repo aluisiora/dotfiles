@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# gdiff: A middleware script for common git diff-related commands.
+#
+# This script checks the first argument to decide which git command to run.
+# All subsequent arguments are passed directly to the executed git command.
+#
+
+# Use a case statement to check the first argument ($1)
+case "$1" in
+    show)
+        shift
+        exec git show --ext-diff "$@"
+        ;;
+    log)
+        shift
+        exec git log -p --ext-diff "$@"
+        ;;
+    *)
+        exec git diff "$@"
+        ;;
+esac
