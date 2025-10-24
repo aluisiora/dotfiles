@@ -16,11 +16,13 @@
     showStash = true
     showUntrackedFiles = all
 [diff]
+    external = difft
+    tool = difftastic
     context = 3
     renames = copies
     interHunkContext = 10
 [push]
-        autoSetupRemote = true
+    autoSetupRemote = true
     default = current
     followTags = true
 [pull]
@@ -36,19 +38,16 @@
     pushNonFastForward = false
     statusHints = false
 [pager]
-    diff = diff-so-fancy | $PAGER
     branch = false
     tag = false
-[diff-so-fancy]
-    markEmptyLines = false
+    difftool = true
 [log]
     graphColors = blue,yellow,cyan,magenta,green,red
-[color "diff"]
-    meta = black bold
-    frag = magenta
-    context = white
-    whitespace = yellow reverse
-    old = red
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    # See `man git-difftool` for a description of MERGED, LOCAL and REMOTE.
+    cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
 [color "decorate"]
     HEAD = red
     branch = blue
@@ -60,3 +59,9 @@
     remote = yellow
     upstream = green
     plain = blue
+[color "diff"]
+    meta = black bold
+    frag = magenta
+    context = white
+    whitespace = yellow reverse
+    old = red 
