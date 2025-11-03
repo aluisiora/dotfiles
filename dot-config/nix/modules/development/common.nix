@@ -24,7 +24,6 @@
       nixfmt-rfc-style
       lua51Packages.luarocks
       nodejs_24
-      mysql-client
       wget
       jq
       fzf
@@ -37,6 +36,7 @@
       tldr
       zoxide
       posting
+      mariadb.client
     ];
   };
 }
