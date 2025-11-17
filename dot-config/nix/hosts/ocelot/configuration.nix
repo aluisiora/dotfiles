@@ -6,7 +6,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./apple-studio-display.nix
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
