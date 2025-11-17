@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -9,10 +10,26 @@
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
+    inputs.jovian.nixosModules.default
   ];
 
   # Custom modules
   development.enable = true;
+
+  # SteamOS-like mode
+  jovian = {
+    steam = {
+      enable = true;
+      user = "gaming";
+      autoStart = true;
+      desktopSession = "gamescope-wayland";
+    };
+    steamos = {
+      enableProductSerialAccess = false;
+      enableZram = false;
+    };
+    hardware.has.amd.gpu = true;
+  };
 
   # System config
   networking.hostName = "ocelot";
@@ -45,6 +62,16 @@
   services.libinput.enable = true;
   services.openssh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+  users.users.gaming = {
+    description = "AutoStart gaming user";
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "input"
+    ];
+  };
   users.users.aluisio = {
     description = "Aluisio Amaral";
     isNormalUser = true;
