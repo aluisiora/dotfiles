@@ -1,34 +1,23 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
+    ./apple-studio-display.nix
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
-    inputs.jovian.nixosModules.default
   ];
 
   # Custom modules
   development.enable = true;
+  desktop.enable = true;
 
-  # SteamOS-like mode
-  jovian = {
-    steam = {
-      enable = true;
-      user = "gaming";
-      autoStart = true;
-      desktopSession = "gamescope-wayland";
-    };
-    steamos = {
-      enableProductSerialAccess = false;
-      enableZram = false;
-    };
-    hardware.has.amd.gpu = true;
-  };
+  # DE
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
 
   # System config
   networking.hostName = "ocelot";

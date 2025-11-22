@@ -47,6 +47,7 @@
     fonts.enableDefaultPackages = true;
     fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
+      monaspace
       noto-fonts
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
