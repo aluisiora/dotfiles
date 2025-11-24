@@ -29,6 +29,7 @@
 
     environment.systemPackages = with pkgs; [
       showtime
+      gnome-tweaks
       gnomeExtensions.appindicator
       gnomeExtensions.paperwm
       gnomeExtensions.blur-my-shell

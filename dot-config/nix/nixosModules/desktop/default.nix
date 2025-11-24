@@ -54,6 +54,7 @@
       dejavu_fonts
       jetbrains-mono
       liberation_ttf
+      inter
       # Windows fonts
       corefonts
       vista-fonts
