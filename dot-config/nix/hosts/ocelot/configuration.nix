@@ -50,16 +50,6 @@
   services.libinput.enable = true;
   services.openssh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.gaming = {
-    description = "AutoStart gaming user";
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "video"
-      "input"
-    ];
-  };
   users.users.aluisio = {
     description = "Aluisio Amaral";
     isNormalUser = true;
