@@ -66,8 +66,6 @@
     "aluisio"
   ];
   environment.systemPackages = with pkgs; [
-    google-chrome
-    slack
     distrobox
   ];
   programs.zsh = {

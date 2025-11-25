@@ -62,9 +62,7 @@
     environment.systemPackages =
       with pkgs;
       [
-        ytmdesktop
         ghostty
-        wezterm
       ]
       ++ config.desktop.extraPackages;
   };
