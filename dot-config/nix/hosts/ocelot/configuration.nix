@@ -13,11 +13,6 @@
 
   # Custom modules
   development.enable = true;
-  desktop.enable = true;
-
-  # DE
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
 
   # System config
   networking.hostName = "ocelot";
