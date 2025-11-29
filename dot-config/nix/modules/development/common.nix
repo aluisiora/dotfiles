@@ -38,6 +38,7 @@
       zoxide
       posting
       mariadb.client
+      sqlite
     ];
   };
 }
