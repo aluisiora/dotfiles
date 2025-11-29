@@ -19,6 +19,7 @@
       lazygit
       stow
       devenv
+      devbox
       cargo
       nixd
       nixfmt-rfc-style
