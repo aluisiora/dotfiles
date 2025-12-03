@@ -9,6 +9,18 @@ fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load fzf bindings
+[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
+
+# Load zoxide
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
+
+# Load carapace completion engine
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+[ -x "$(command -v carapace)" ] && source <(carapace _carapace)
 
 # History
 [ ! -d "$XDG_STATE_HOME/zsh" ] && mkdir $XDG_STATE_HOME/zsh
@@ -23,31 +35,31 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Add plugins
-zinit ice depth=1
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+# Load core zsh completions and init (Compinit)
+zinit wait lucid for \
+    atinit"zicompinit; zicdreplay" \
+    zsh-users/zsh-completions
+
+# Load fzf tab completions
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
-# Load completions
-autoload -U compinit && compinit
-zinit cdreplay -q
-
-# Completions style
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-
-# Aliases
-alias ls="ls --color=auto"
-alias ll="ls -lah --color=auto"
-
-if [ -f $HOME/.zshrc_local ]; then
-  source $HOME/.zshrc_local
-fi
+# Load syntax highlighting and autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 
 # Set custom prompt theme
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
+
+# Completions style
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' query-string ''
+
+# Aliases
+alias ls="ls --color=auto"
+alias ll="ls -lah --color=auto"
 
 # Keybindings
 bindkey -v # vi mode
@@ -56,13 +68,9 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'tmux-sessionizer^M'
 
-# Extra envs
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+# Load extras
 
-# evals
-[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
-[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
-[ -x "$(command -v carapace)" ] && source <(carapace _carapace)
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
+[ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
