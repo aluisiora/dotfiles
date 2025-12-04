@@ -12,16 +12,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load fzf bindings
-[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
-
-# Load zoxide
-[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
-
-# Load carapace completion engine
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-[ -x "$(command -v carapace)" ] && source <(carapace _carapace)
-
 # History
 [ ! -d "$XDG_STATE_HOME/zsh" ] && mkdir $XDG_STATE_HOME/zsh
 HISTFILE="$XDG_STATE_HOME"/zsh/history
@@ -34,6 +24,19 @@ setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+
+# Load fzf bindings
+[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
+
+# Load zoxide
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
+
+# Load carapace completion engine
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+[ -x "$(command -v carapace)" ] && source <(carapace _carapace)
+
+# Load atuin
+[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh)"
 
 # Load core zsh completions and init (Compinit)
 zinit wait lucid for \
@@ -68,8 +71,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'tmux-sessionizer^M'
 
-# Load extras
-
+# Misc
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
