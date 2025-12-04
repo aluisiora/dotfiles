@@ -18,6 +18,7 @@
       neovim
       lazygit
       stow
+      atuin
       devenv
       devbox
       cargo
