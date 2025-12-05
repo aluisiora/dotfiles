@@ -17,6 +17,7 @@
       tmux
       neovim
       lazygit
+      lazydocker
       stow
       atuin
       devenv
