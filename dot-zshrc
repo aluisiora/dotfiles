@@ -36,7 +36,7 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 [ -x "$(command -v carapace)" ] && source <(carapace _carapace)
 
 # Load atuin
-[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh)"
+[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 
 # Load core zsh completions and init (Compinit)
 zinit wait lucid for \
