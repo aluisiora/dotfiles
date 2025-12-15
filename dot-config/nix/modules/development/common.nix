@@ -29,6 +29,7 @@
       nodejs_24
       wget
       jq
+      yq
       fzf
       fd
       ripgrep
