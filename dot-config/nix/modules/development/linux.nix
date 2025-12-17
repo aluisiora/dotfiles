@@ -15,10 +15,10 @@
     virtualisation.docker.enableOnBoot = true;
     environment.systemPackages = with pkgs; [
       psmisc
-      lazydocker
       yazi
       gnumake
       gcc
+      python3
     ];
   };
 }

@@ -26,6 +26,7 @@
       nixd
       nixfmt-rfc-style
       lua51Packages.luarocks
+      stylua
       nodejs_24
       wget
       jq
@@ -42,6 +43,7 @@
       posting
       mariadb.client
       sqlite
+      usql
     ];
   };
 }

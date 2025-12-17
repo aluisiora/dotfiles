@@ -23,6 +23,12 @@
         modules = [ ./hosts/ocelot/configuration.nix ];
       };
 
+      nixosConfigurations.otacon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/otacon/configuration.nix ];
+      };
+
       darwinConfigurations.snake = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [ ./hosts/snake/configuration.nix ];
