@@ -90,6 +90,23 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Shutdown at 7pm
+  systemd.services.auto-shutdown = {
+    description = "Shutdown system at 7pm";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/shutdown now";
+    };
+  };
+  systemd.timers.auto-shutdown = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 19:00:00";
+      Persistent = false;
+      Unit = "auto-shutdown.service";
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
