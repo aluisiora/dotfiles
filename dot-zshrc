@@ -12,6 +12,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+autoload -Uz compinit && compinit
+
 # History
 [ ! -d "$XDG_STATE_HOME/zsh" ] && mkdir $XDG_STATE_HOME/zsh
 HISTFILE="$XDG_STATE_HOME"/zsh/history
