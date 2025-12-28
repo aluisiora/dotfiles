@@ -44,6 +44,7 @@
       mariadb.client
       sqlite
       usql
+      yazi
     ];
   };
 }
