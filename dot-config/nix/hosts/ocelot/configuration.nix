@@ -13,6 +13,9 @@
 
   # Custom modules
   development.enable = true;
+  desktop.enable = true;
+  programs.niri.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # System config
   networking.hostName = "ocelot";
