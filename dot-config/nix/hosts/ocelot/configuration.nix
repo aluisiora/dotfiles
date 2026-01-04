@@ -15,7 +15,7 @@
   development.enable = true;
   desktop.enable = true;
   programs.niri.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.gdm.enable = true;
 
   # System config
   networking.hostName = "ocelot";
