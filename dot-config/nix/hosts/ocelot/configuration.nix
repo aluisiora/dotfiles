@@ -14,6 +14,9 @@
   # Custom modules
   development.enable = true;
   desktop.enable = true;
+  desktop.extraPackages = with pkgs; [
+    slack
+  ];
   programs.niri.enable = true;
   services.displayManager.gdm.enable = true;
 
