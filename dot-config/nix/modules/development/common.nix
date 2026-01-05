@@ -45,6 +45,7 @@
       sqlite
       usql
       yazi
+      tree-sitter
     ];
   };
 }

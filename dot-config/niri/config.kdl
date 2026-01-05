@@ -7,6 +7,15 @@ debug {
     honor-xdg-activation-with-invalid-serial
 }
 
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+xwayland-satellite {
+    // off
+    path "xwayland-satellite"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
@@ -82,7 +91,7 @@ input {
 }
 
 cursor {
-    xcursor-theme "BreezeX-RosePine-Linux"
+    xcursor-theme "Adwaita"
     hide-when-typing
 }
 
@@ -256,7 +265,7 @@ layout {
         // draw the shadow correctly, without having to draw it behind the
         // window. These will also remove client-side shadows if the window
         // draws any.
-        //
+
         // draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
@@ -292,13 +301,6 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
-spawn-at-startup "dms-shell"
-spawn-at-startup "ghostty"
-spawn-at-startup "google-chrome-stable"
-spawn-at-startup "slack"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -351,8 +353,14 @@ workspace "music"
 
 // Global window rounded corners
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 20
     clip-to-geometry true
+}
+
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
 }
 
 // Pin apps to workspaces
@@ -362,29 +370,11 @@ window-rule {
     match app-id="Slack"
     open-on-workspace "social"
 }
-window-rule {
-    match app-id="google-chrome"
-    open-on-workspace "browser"
-}
-window-rule {
-    match app-id="com.mitchellh.ghostty"
-    match app-id="org.wezfurlong.wezterm"
-    match app-id=r#"firefox"#
-    match app-id="Chromium-browser"
-    open-on-workspace "coding"
-}
-window-rule {
-    match app-id=r#"YouTube Music"#
-    open-on-workspace "music"
-}
 
 // Maximized apps
 window-rule {
-    match app-id="google-chrome"
-    match app-id=r#"YouTube Music"#
-    match app-id="com.mitchellh.ghostty"
-    match app-id="org.wezfurlong.wezterm"
     match app-id="Slack"
+    match app-id="app.zen_browser.zen"
     open-maximized true
 }
 
@@ -450,23 +440,23 @@ binds {
     Super+Return hotkey-overlay-title="Terminal" { spawn "ghostty"; }
 
     // Dank Material Shell keybinds
-    Ctrl+Alt+Delete       hotkey-overlay-title="Power options" { spawn "dms-shell" "ipc" "call" "powermenu" "toggle"; }
-    Ctrl+Shift+Escape     hotkey-overlay-title="System monitor" { spawn "dms-shell" "ipc" "call" "processlist" "toggle"; }
-    Super+Ctrl+Q          hotkey-overlay-title="Lock the screen" { spawn "dms-shell" "ipc" "call" "lock" "lock"; }
-    Super+Space           hotkey-overlay-title="Application launcher" { spawn "dms-shell" "ipc" "call" "spotlight" "toggle"; }
-    Super+N               hotkey-overlay-title="Notification center" { spawn "dms-shell" "ipc" "call" "notifications" "toggle"; }
-    Super+Comma           hotkey-overlay-title="Settings" { spawn "dms-shell" "ipc" "call" "settings" "toggle"; }
-    // Super+P               hotkey-overlay-title="Scratchpad" { spawn "dms-shell" "ipc" "call" "notepad" "toggle"; }
-    // Super+Semicolon       hotkey-overlay-title="Clipboard" { spawn "dms-shell" "ipc" "call" "clipboard" "toggle"; }
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "dms-shell" "ipc" "call" "audio" "increment" "3"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn "dms-shell" "ipc" "call" "audio" "decrement" "3"; }
-    XF86AudioMute         allow-when-locked=true { spawn "dms-shell" "ipc" "call" "audio" "mute"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "dms-shell" "ipc" "call" "audio" "micmute"; }
-    XF86AudioPlay         allow-when-locked=true { spawn "dms-shell" "ipc" "call" "mpris" "playPause"; }
-    XF86AudioPrev         allow-when-locked=true { spawn "dms-shell" "ipc" "call" "mpris" "previous"; }
-    XF86AudioNext         allow-when-locked=true { spawn "dms-shell" "ipc" "call" "mpris" "next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms-shell" "ipc" "call" "brightness" "increment" "5"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "dms-shell" "ipc" "call" "brightness" "decrement" "5"; }
+    Super+Space           hotkey-overlay-title="Application launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Super+Comma           hotkey-overlay-title="Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Super+N               hotkey-overlay-title="Notification history" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+    Ctrl+Alt+Delete       hotkey-overlay-title="Power options" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    Super+Ctrl+Q          hotkey-overlay-title="Lock and suspend" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
+
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+
+    XF86AudioPlay         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
+    XF86AudioPrev         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "previous"; }
+    XF86AudioNext         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     // Super+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }

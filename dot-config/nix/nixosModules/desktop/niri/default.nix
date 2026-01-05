@@ -16,7 +16,8 @@
       MOZ_ENABLE_WAYLAND = "1";
       USE_WAYLAND_GRIM = "1";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      XCURSOR_THEME = "BreezeX-RosePine-Linux";
+      XCURSOR_THEME = "Adwaita";
+      XCURSOR_SIZE = "32";
     };
 
     services.gvfs.enable = true;
@@ -33,7 +34,9 @@
               color-scheme = "prefer-dark";
               gtk-theme = "Adwaita";
               icon-theme = "Adwaita";
-              cursor-theme = "BreezeX-RosePine-Linux";
+              font-name = "Lato Regular 10";
+              document-font-name = "Lato Regular 10";
+              cursor-theme = "Adwaita";
             };
           };
         }
@@ -45,7 +48,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      rose-pine-cursor
+      adwaita-icon-theme
       gnome-themes-extra
       gnome-font-viewer
       gnome-secrets

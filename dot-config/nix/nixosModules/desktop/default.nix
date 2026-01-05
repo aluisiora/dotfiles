@@ -45,21 +45,32 @@
         options = "";
       };
     };
-    fonts.enableDefaultPackages = true;
-    fonts.fontDir.enable = true;
-    fonts.packages = with pkgs; [
-      monaspace
-      noto-fonts
-      noto-fonts-color-emoji
-      noto-fonts-cjk-sans
-      dejavu_fonts
-      jetbrains-mono
-      liberation_ttf
-      inter
-      # Windows fonts
-      corefonts
-      vista-fonts
-    ];
+    fonts = {
+      enableDefaultPackages = true;
+      fontDir.enable = true;
+      fontconfig = {
+        defaultFonts = {
+          emoji = [ "Noto Color Emoji" ];
+          sansSerif = [ "Lato" "Dejavu Sans" ];
+          serif = [ "DejaVu Serif" ];
+          monospace = [ "Monaspace Neon" ];
+        };
+      };
+      packages = with pkgs; [
+        monaspace
+        noto-fonts
+        noto-fonts-color-emoji
+        noto-fonts-cjk-sans
+        dejavu_fonts
+        font-awesome
+        jetbrains-mono
+        liberation_ttf
+        inter
+        # Windows fonts
+        corefonts
+        vista-fonts
+      ];
+    };
     environment.systemPackages =
       with pkgs;
       [
