@@ -62,6 +62,7 @@
       loupe
       showtime
       xwayland-satellite
+      xeyes
       xdg-user-dirs
       xdg-user-dirs-gtk
       wev
