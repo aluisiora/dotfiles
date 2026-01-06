@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./apple-studio-display.nix
+    ./zsa-voyager.nix
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
