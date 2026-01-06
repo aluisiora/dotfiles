@@ -26,7 +26,10 @@
       nixd
       nixfmt-rfc-style
       lua51Packages.luarocks
+      lua51Packages.luacheck
       stylua
+      fixjson
+      hadolint
       nodejs_24
       wget
       jq
