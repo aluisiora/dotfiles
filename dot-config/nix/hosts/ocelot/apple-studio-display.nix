@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -15,6 +16,14 @@
   };
 
   hardware.i2c.enable = true;
+  
+  environment.systemPackages = with pkgs; [
+    asdbctl
+  ];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1114", MODE="0666", GROUP="video"
+  '';
 
   systemd.tmpfiles.rules = lib.mkIf config.services.displayManager.gdm.enable [
     "L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}"
