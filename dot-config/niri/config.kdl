@@ -59,7 +59,7 @@ input {
     }
 
     mouse {
-        off
+        // off
         // natural-scroll
         // accel-speed 0.6
         // accel-profile "adaptive"
@@ -67,7 +67,7 @@ input {
     }
 
     trackpoint {
-        off
+        // off
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
@@ -441,11 +441,12 @@ binds {
 
     // Dank Material Shell keybinds
     Super+Space           hotkey-overlay-title="Application launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    XF86Search            { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Super+Comma           hotkey-overlay-title="Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Super+N               hotkey-overlay-title="Notification history" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
     Ctrl+Alt+Delete       hotkey-overlay-title="Power options" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
     Super+Ctrl+Q          hotkey-overlay-title="Lock and suspend" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
-    XF86DoNotDisturb      hotkey-overlay-title="Do not disturb" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleDND"; }
+    XF86DoNotDisturb      { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleDND"; }
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
@@ -458,8 +459,8 @@ binds {
 
     XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
-    XF86Launch6 allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86Launch5 allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86Launch6           allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86Launch5           allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     // Super+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
@@ -488,6 +489,7 @@ binds {
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
     Super+O repeat=false { toggle-overview; }
+    XF86LaunchA repeat=false { toggle-overview; }
 
     Super+Q repeat=false { close-window; }
 

@@ -15,6 +15,8 @@
       (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
         calendarSupport = true;
       })
+      pkgs.playerctl
+      pkgs.cava
     ];
   };
 }
