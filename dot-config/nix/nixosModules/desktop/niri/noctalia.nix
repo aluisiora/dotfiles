@@ -5,18 +5,39 @@
   inputs,
   ...
 }:
+let
+  noctalia-shell = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    calendarSupport = true;
+  };
+in
 {
   imports = [ inputs.noctalia.nixosModules.default ];
 
   config = lib.mkIf config.programs.niri.enable {
     services.noctalia-shell.enable = true;
-    services.gnome.evolution-data-server.enable = true;
     environment.systemPackages = [
-      (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-        calendarSupport = true;
-      })
+      noctalia-shell
       pkgs.playerctl
       pkgs.cava
     ];
+
+    services.gnome.evolution-data-server.enable = true;
+
+    services.hypridle.enable = true;
+    systemd.user.services.hypridle = {
+      path = [
+        config.programs.niri.package
+        noctalia-shell
+      ];
+      serviceConfig = {
+        PassEnvironment = [
+          "PATH"
+          "DBUS_SESSION_BUS_ADDRESS"
+          "WAYLAND_DISPLAY"
+          "XDG_RUNTIME_DIR"
+          "NIRI_SOCKET"
+        ];
+      };
+    };
   };
 }
