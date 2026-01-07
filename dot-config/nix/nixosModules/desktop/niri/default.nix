@@ -42,12 +42,15 @@
         }
       ];
     };
+    qt.enable = true;
+    qt.style = "breeze";
 
     fonts.packages = with pkgs; [
       lato
     ];
 
     environment.systemPackages = with pkgs; [
+      kdePackages.breeze-icons
       adwaita-icon-theme
       gnome-themes-extra
       gnome-font-viewer
