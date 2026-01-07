@@ -15,13 +15,17 @@ in
 
   config = lib.mkIf config.programs.niri.enable {
     services.noctalia-shell.enable = true;
-    environment.systemPackages = [
+    environment.systemPackages = with pkgs; [
       noctalia-shell
-      pkgs.playerctl
-      pkgs.cava
+      playerctl
+      cava
+      evolution
     ];
 
     services.gnome.evolution-data-server.enable = true;
+    services.gnome.gnome-keyring.enable = true;
+    services.gvfs.enable = true;
+    programs.dconf.enable = true;
 
     services.hypridle.enable = true;
     systemd.user.services.hypridle = {
