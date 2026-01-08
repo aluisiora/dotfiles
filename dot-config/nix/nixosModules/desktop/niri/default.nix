@@ -43,6 +43,7 @@
       ];
     };
     qt.enable = true;
+    qt.platformTheme = "qt5ct";
     qt.style = "breeze";
 
     fonts.packages = with pkgs; [
@@ -51,6 +52,7 @@
 
     environment.systemPackages = with pkgs; [
       kdePackages.breeze-icons
+      kdePackages.qt6ct
       adwaita-icon-theme
       gnome-themes-extra
       gnome-font-viewer
