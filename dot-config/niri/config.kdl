@@ -62,7 +62,7 @@ input {
         // off
         // natural-scroll
         // accel-speed 0.6
-        // accel-profile "adaptive"
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
@@ -346,7 +346,6 @@ animations {
 workspace "browser"
 workspace "social"
 workspace "coding"
-workspace "music"
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
