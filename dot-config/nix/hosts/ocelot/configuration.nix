@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ./apple-studio-display.nix
     ./zsa-voyager.nix
-    ./vanta.nix
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
