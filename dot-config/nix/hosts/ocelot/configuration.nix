@@ -75,6 +75,8 @@
     enableGlobalCompInit = false;
   };
 
+  networking.firewall.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   system.stateVersion = "25.11";
