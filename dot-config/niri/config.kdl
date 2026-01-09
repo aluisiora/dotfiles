@@ -343,9 +343,9 @@ animations {
 }
 
 // Workspaces
+workspace "coding"
 workspace "browser"
 workspace "social"
-workspace "coding"
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
