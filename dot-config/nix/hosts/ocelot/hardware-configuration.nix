@@ -12,6 +12,7 @@
   # Hardware resources
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
+  hardware.amdgpu.initrd.enable = true;
 
   # Secure boot
   environment.systemPackages = with pkgs; [
@@ -25,11 +26,11 @@
   boot.lanzaboote.pkiBundle = "/var/lib/sbctl";
 
   # System configuration
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" "lz4" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "lz4" "lz4_compress" ];
   boot.initrd.luks.devices."root-nvme".device = "/dev/disk/by-uuid/13372db5-f6f0-4272-9f74-ce16f7b7e891";
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.compressor=lz4" "zswap.max_pool_percent=20" ];
+  boot.kernelParams = [ "zswap.enabled=1" "zswap.compressor=lz4" "zswap.max_pool_percent=20" "zswap.zpool=z3fold" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
