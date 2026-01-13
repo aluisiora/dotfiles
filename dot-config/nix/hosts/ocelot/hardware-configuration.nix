@@ -13,6 +13,7 @@
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.amdgpu.initrd.enable = true;
+  hardware.amdgpu.opencl.enable = true;
 
   # Secure boot
   environment.systemPackages = with pkgs; [
