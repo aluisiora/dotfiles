@@ -11,20 +11,16 @@
 
   # Hardware resources
   hardware.bluetooth.enable = true;
+  hardware.graphics.enable = true;
   hardware.amdgpu.initrd.enable = true;
   hardware.amdgpu.opencl.enable = true;
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libva-vdpau-driver
-      rocmPackages.rocm-smi
-    ];
-  };
 
   # Secure boot
   environment.systemPackages = with pkgs; [
     sbctl
     lz4  
+    btop-rocm
+    rocmPackages.rocm-smi
   ];
   boot.bootspec.enable = true;
   boot.initrd.systemd.enable = true;

@@ -19,6 +19,9 @@
       gnumake
       gcc
       python3
+      ghostty
     ];
+    services.dbus.packages = [ pkgs.ghostty ];
+    systemd.packages = [ pkgs.ghostty ];
   };
 }

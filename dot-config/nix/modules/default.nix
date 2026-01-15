@@ -13,7 +13,6 @@
   environment.systemPackages = with pkgs; [
     vim
     curl
-    btop
     nh
     fastfetch
   ];
