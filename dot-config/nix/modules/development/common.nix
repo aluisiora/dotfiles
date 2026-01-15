@@ -13,42 +13,43 @@
     programs.direnv.enable = true;
     programs.direnv.silent = true;
     environment.systemPackages = with pkgs; [
-      git
-      tmux
-      neovim
-      lazygit
-      lazydocker
-      stow
       atuin
-      devenv
-      devbox
+      bat
+      carapace
       cargo
-      nixd
-      nixfmt-rfc-style
-      lua51Packages.luarocks
-      lua51Packages.luacheck
-      stylua
-      fixjson
-      hadolint
-      nodejs_24
-      wget
-      jq
-      yq
-      fzf
-      fd
-      ripgrep
-      rsync
+      devbox
+      devenv
       diff-so-fancy
       difftastic
-      carapace
-      tldr
-      zoxide
-      posting
+      fd
+      fixjson
+      fzf
+      git
+      hadolint
+      jq
+      lazydocker
+      lazygit
+      lua51Packages.luacheck
+      lua51Packages.luarocks
       mariadb.client
+      neovim
+      nixd
+      nixfmt-rfc-style
+      nodejs_24
+      posting
+      ripgrep
+      rsync
       sqlite
-      usql
-      yazi
+      stow
+      stylua
+      tldr
+      tmux
       tree-sitter
+      usql
+      wget
+      yazi
+      yq
+      zoxide
     ];
   };
 }
