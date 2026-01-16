@@ -36,6 +36,7 @@
       gnomeExtensions.hibernate-status-button
       gnomeExtensions.keep-awake
       gnomeExtensions.rounded-window-corners-reborn
+      deja-dup
     ];
     environment.gnome.excludePackages = with pkgs; [
       gnome-tour

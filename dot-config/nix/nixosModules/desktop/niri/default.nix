@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ./noctalia.nix ];
+  imports = [ ./noctalia.nix ./hamr.nix ];
 
   config = lib.mkIf config.programs.niri.enable {
     environment.variables = {
@@ -59,6 +59,7 @@
       gnome-secrets
       gnome-calculator
       gnome-text-editor
+      deja-dup
       hicolor-icon-theme
       decibels
       nautilus
