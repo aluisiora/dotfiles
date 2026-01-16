@@ -1,4 +1,4 @@
-// This config is in the KDL format: https://kdl.dev
+
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
@@ -202,13 +202,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#8fbcbb"
+        active-color "#76946A"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#3b4252"
+        inactive-color "#49443C"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -437,10 +437,11 @@ binds {
     // shows a list of important hotkeys.
     // Super+Shift+Slash { show-hotkey-overlay; }
 
-    Super+Return hotkey-overlay-title="Terminal" { spawn "ghostty"; }
+    Super+Return hotkey-overlay-title="Terminal" { spawn "ghostty" "+new-window"; }
 
     // Dank Material Shell keybinds
     Super+Space           hotkey-overlay-title="Application launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    // Super+Space           hotkey-overlay-title="Application launcher" { spawn "hamr" "toggle"; }
     XF86Search            { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Super+Comma           hotkey-overlay-title="Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Super+N               hotkey-overlay-title="Notification history" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
@@ -631,8 +632,6 @@ binds {
     Super+Shift+b { move-column-to-workspace "browser"; }
     Super+t { focus-workspace "coding"; }
     Super+Shift+t { move-column-to-workspace "coding"; }
-    Super+m { focus-workspace "music"; }
-    Super+Shift+m { move-column-to-workspace "music"; }
 
     // Alternatively, there are commands to move just a single window:
     // Super+Ctrl+1 { move-window-to-workspace 1; }
@@ -676,12 +675,12 @@ binds {
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
-    Super+Minus { set-column-width "-20%"; }
-    Super+Equal { set-column-width "+20%"; }
+    Super+Minus { set-column-width "-10%"; }
+    Super+Shift+Equal { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
-    Super+Alt+Minus { set-window-height "-20%"; }
-    Super+Alt+Equal { set-window-height "+20%"; }
+    Super+Alt+Minus { set-window-height "-10%"; }
+    Super+Alt+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
     Super+V       { toggle-window-floating; }
