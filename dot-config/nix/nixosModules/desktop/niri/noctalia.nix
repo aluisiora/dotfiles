@@ -6,7 +6,8 @@
   ...
 }:
 let
-  noctalia-shell = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+  system = pkgs.stdenv.hostPlatform.system;
+  noctalia-shell = inputs.noctalia.packages.${system}.default.override {
     calendarSupport = true;
   };
 in

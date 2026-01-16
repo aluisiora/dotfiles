@@ -53,6 +53,26 @@
         "type": "github"
       }
     },
+    "hamr": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768268214,
+        "narHash": "sha256-KThVNiugcsu9oFmEKHZ/c8wR5TlLUynA3NeCwo+13Io=",
+        "owner": "Stewart86",
+        "repo": "hamr",
+        "rev": "3c15ab48ec65617df9592948c1e353e11d88a1b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Stewart86",
+        "repo": "hamr",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -158,6 +178,7 @@
     },
     "root": {
       "inputs": {
+        "hamr": "hamr",
         "lanzaboote": "lanzaboote",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",

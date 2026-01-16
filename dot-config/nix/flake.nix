@@ -15,6 +15,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hamr = {
+      url = "github:Stewart86/hamr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
