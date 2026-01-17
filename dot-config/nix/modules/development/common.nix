@@ -24,6 +24,7 @@
       fd
       fixjson
       fzf
+      gemini-cli
       git
       hadolint
       jq
