@@ -31,6 +31,7 @@
       jq
       lazydocker
       lazygit
+      libxml2
       lua51Packages.luacheck
       lua51Packages.luarocks
       mariadb.client
