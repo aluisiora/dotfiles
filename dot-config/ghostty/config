@@ -1,0 +1,27 @@
+config-file = ?config.private
+theme = Catppuccin Mocha
+shell-integration-features = ssh-terminfo,ssh-env
+
+font-family = Monaspace Neon Var
+font-variation = wght=400
+font-variation = wdth=100
+font-variation-bold = wght=700
+font-variation-italic = slnt=-11
+font-variation-bold-italic = wght=700
+font-variation-bold-italic = slnt=-11
+font-synthetic-style = false
+font-feature = calt, liga
+font-feature = ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, ss10
+# 0 alternatives [0, 1, 2, 3, 4]
+font-feature = cv01=2
+# l, i alternatives
+font-feature = cv10=0
+# j, f, r, t alternatives
+font-feature = cv11=0
+# vertically aligned closer to the top of the space
+font-feature = cv30=0
+# 6-pointed asterisk
+font-feature = cv31=1
+# >= <= angled lower line
+font-feature = cv32=0
+adjust-cell-height = 10%
