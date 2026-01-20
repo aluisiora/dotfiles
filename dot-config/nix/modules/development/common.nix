@@ -17,7 +17,6 @@
       bat
       carapace
       cargo
-      cursor-cli
       devbox
       devenv
       diff-so-fancy
