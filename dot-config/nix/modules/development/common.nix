@@ -37,7 +37,7 @@
       mariadb.client
       neovim
       nixd
-      nixfmt-rfc-style
+      nixfmt
       nodejs_24
       posting
       ripgrep

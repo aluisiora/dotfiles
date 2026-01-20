@@ -2,6 +2,9 @@
   pkgs,
   ...
 }:
+let
+  user = "aluisio";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,12 +15,6 @@
     ../../modules
     ../../modules/development/linux.nix
   ];
-
-  # Custom modules
-  development.enable = true;
-  desktop.enable = true;
-  programs.niri.enable = true;
-  services.displayManager.gdm.enable = true;
 
   # System config
   time.timeZone = "America/Sao_Paulo";
@@ -33,7 +30,7 @@
   services.libinput.enable = true;
   services.openssh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.aluisio = {
+  users.users.${user} = {
     description = "Aluisio Amaral";
     isNormalUser = true;
     extraGroups = [
@@ -46,15 +43,26 @@
   };
   nix.settings.trusted-users = [
     "root"
-    "aluisio"
+    "${user}"
   ];
   environment.systemPackages = with pkgs; [
     distrobox
     slack
+    gnome-boxes
   ];
   programs.zsh = {
     enable = true;
     enableGlobalCompInit = false;
+  };
+
+  # Custom modules
+  development.enable = true;
+  desktop.enable = true;
+  programs.niri.enable = true;
+  services.displayManager.gdm.enable = true;
+  virtualisation = {
+    enable = true;
+    boxesUsers = [ "${user}" ];
   };
 
   # Network

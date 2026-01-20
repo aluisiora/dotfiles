@@ -8,6 +8,7 @@
     ./plymouth.nix
     ./sddm.nix
     ./development-utils.nix
+    ./virtualisation.nix
   ];
 
   environment.systemPackages = with pkgs; [
