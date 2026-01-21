@@ -49,6 +49,7 @@ in
     distrobox
     slack
     gnome-boxes
+    obsidian
   ];
   programs.zsh = {
     enable = true;
