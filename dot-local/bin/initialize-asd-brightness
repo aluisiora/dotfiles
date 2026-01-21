@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-sleep 3
-current_brightness=$(asdbctl get | awk '{print $2}')
-noctalia-shell ipc call brightness set {$current_brightness}
+sleep 1
+current_brightness=$(/run/current-system/sw/bin/asdbctl get | awk '{print $2}')
+/run/current-system/sw/bin/noctalia-shell ipc call brightness set ${current_brightness}

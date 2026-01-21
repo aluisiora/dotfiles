@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+niri msg action power-on-monitors
+/home/aluisio/.local/bin/initialize-asd-brightness
