@@ -12,7 +12,6 @@
 
   config = lib.mkIf config.plymouth.enable {
     boot.consoleLogLevel = 3;
-    boot.loader.timeout = lib.mkForce 0;
     boot.initrd.verbose = false;
     boot.kernelParams = [
       "quiet"
