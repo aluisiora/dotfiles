@@ -59,6 +59,7 @@ in
   # Custom modules
   development.enable = true;
   desktop.enable = true;
+  plymouth.enable = true;
   programs.niri.enable = true;
   services.displayManager.gdm.enable = true;
   virtualisation = {
