@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ./noctalia.nix ./hamr.nix ];
+  imports = [ ./noctalia.nix ];
 
   config = lib.mkIf config.programs.niri.enable {
     environment.variables = {
