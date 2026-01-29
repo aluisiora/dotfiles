@@ -23,6 +23,8 @@ in
       evolution
     ];
 
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
     services.gnome.evolution-data-server.enable = true;
     services.gnome.gnome-keyring.enable = true;
     services.gvfs.enable = true;
