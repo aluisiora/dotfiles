@@ -62,6 +62,8 @@ in
       wlrobs
       obs-pipewire-audio-capture
       obs-composite-blur
+      obs-backgroundremoval
+      obs-composite-blur
     ];
   };
 
