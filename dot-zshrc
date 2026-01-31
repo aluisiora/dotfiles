@@ -40,6 +40,9 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 # Load atuin
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 
+# Load mise-en-place
+[ -x "$(command -v mise)" ] && eval "$(mise activate zsh)"
+
 # Load core zsh completions and init (Compinit)
 zinit wait lucid for \
     atinit"zicompinit; zicdreplay" \

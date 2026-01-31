@@ -34,6 +34,7 @@
       lua51Packages.luacheck
       lua51Packages.luarocks
       mariadb.client
+      mise
       neovim
       nixd
       nixfmt
