@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -14,6 +15,7 @@ in
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
+    inputs.solaar.nixosModules.default
   ];
 
   # System config
@@ -66,6 +68,7 @@ in
       obs-composite-blur
     ];
   };
+  services.solaar.enable = true;
 
   # Custom modules
   development.enable = true;
