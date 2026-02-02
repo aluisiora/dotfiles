@@ -16,6 +16,7 @@
       MOZ_ENABLE_WAYLAND = "1";
       USE_WAYLAND_GRIM = "1";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QT_QPA_PLATFORMTHEME = "gtk3";
       XCURSOR_THEME = "Adwaita";
       XCURSOR_SIZE = "32";
     };
@@ -42,37 +43,35 @@
         }
       ];
     };
-    qt.enable = true;
-    qt.platformTheme = "qt5ct";
-    qt.style = "breeze";
 
     fonts.packages = with pkgs; [
       lato
     ];
 
     environment.systemPackages = with pkgs; [
-      kdePackages.breeze-icons
-      kdePackages.qt6ct
       adwaita-icon-theme
-      gnome-themes-extra
+      bluetui
+      decibels
+      deja-dup
+      file-roller
+      gnome-calculator
       gnome-font-viewer
       gnome-secrets
-      gnome-calculator
       gnome-text-editor
-      deja-dup
+      gnome-themes-extra
       hicolor-icon-theme
-      decibels
-      nautilus
-      file-roller
-      papers
+      kdePackages.breeze-icons
+      kdePackages.qt6ct
       loupe
+      nautilus
+      nwg-look
+      papers
       showtime
-      xwayland-satellite
-      xeyes
+      wev
       xdg-user-dirs
       xdg-user-dirs-gtk
-      wev
-      bluetui
+      xeyes
+      xwayland-satellite
     ];
   };
 }

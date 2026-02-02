@@ -17,18 +17,26 @@ in
   config = lib.mkIf config.programs.niri.enable {
     services.noctalia-shell.enable = true;
     environment.systemPackages = with pkgs; [
-      noctalia-shell
-      playerctl
       cava
       evolution
+      gnome-control-center
+      libsecret
+      noctalia-shell
+      playerctl
     ];
 
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
-    services.gnome.evolution-data-server.enable = true;
-    services.gnome.gnome-keyring.enable = true;
     services.gvfs.enable = true;
     programs.dconf.enable = true;
+
+    # Enable the Evolution Data Server
+    services.gnome.evolution-data-server.enable = true;
+    services.gnome.gnome-online-accounts.enable = true;
+
+    # Required for storing Google credentials
+    services.gnome.gnome-keyring.enable = true;
+    security.polkit.enable = true;
 
     services.hypridle.enable = true;
     systemd.user.services.hypridle = {
