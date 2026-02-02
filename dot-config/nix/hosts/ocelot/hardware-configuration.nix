@@ -21,6 +21,7 @@
     lz4  
     btop-rocm
     rocmPackages.rocm-smi
+    cifs-utils
   ];
   boot.bootspec.enable = true;
   boot.initrd.systemd.enable = true;
@@ -35,6 +36,15 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernelParams = [ "zswap.enabled=1" "zswap.compressor=lz4" "zswap.max_pool_percent=20" "zswap.zpool=z3fold" ];
   boot.extraModulePackages = [ ];
+
+  fileSystems."/mnt/backup" = {
+    device = "//nas.aluis.io/ocelot";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/home/aluisio/.config/samba/nas-secrets,uid=1000,gid=100"];
+  };
 
   fileSystems."/" =
     { device = "/dev/mapper/vg0-root";
