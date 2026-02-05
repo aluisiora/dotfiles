@@ -2,9 +2,13 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
-{
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  apple-color-emoji = inputs.apple-emoji.packages.${system}.default;
+in {
   imports = [
     ./gnome
     ./niri
@@ -48,28 +52,38 @@
     fonts = {
       enableDefaultPackages = true;
       fontDir.enable = true;
-      fontconfig = {
-        defaultFonts = {
-          emoji = [ "Noto Color Emoji" ];
-          sansSerif = [ "Lato" "Dejavu Sans" ];
-          serif = [ "DejaVu Serif" ];
-          monospace = [ "Monaspace Neon" ];
-        };
-      };
       packages = with pkgs; [
         monaspace
         noto-fonts
-        noto-fonts-color-emoji
         noto-fonts-cjk-sans
         dejavu_fonts
         font-awesome
         jetbrains-mono
-        liberation_ttf
         inter
-        # Windows fonts
+        roboto
+        ubuntu-sans
+        # Windows fonts and alternatives
         corefonts
         vista-fonts
+        liberation_ttf
+        # Emoji
+        apple-color-emoji
+        noto-fonts-color-emoji
       ];
+      fontconfig = {
+        defaultFonts = {
+          emoji = [
+            "Apple Color Emoji"
+            "Noto Color Emoji"
+          ];
+          sansSerif = [
+            "Lato"
+            "Dejavu Sans"
+          ];
+          serif = [ "DejaVu Serif" ];
+          monospace = [ "Monaspace Neon" ];
+        };
+      };
     };
     environment.systemPackages =
       with pkgs;
