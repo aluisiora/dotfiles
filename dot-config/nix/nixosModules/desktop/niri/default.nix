@@ -23,6 +23,7 @@
 
     services.gvfs.enable = true;
     services.dbus.enable = true;
+    services.gnome.gnome-keyring.enable = true;
     services.displayManager.sddm.astronaut-embedded-theme = "purple_leaves";
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
@@ -62,10 +63,12 @@
       hicolor-icon-theme
       kdePackages.breeze-icons
       kdePackages.qt6ct
+      libsecret
       loupe
       nautilus
       nwg-look
       papers
+      seahorse
       showtime
       wev
       xdg-user-dirs
