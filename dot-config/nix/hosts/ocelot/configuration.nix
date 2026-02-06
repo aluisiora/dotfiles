@@ -52,6 +52,7 @@ in
     slack
     gnome-boxes
     obsidian
+    github-copilot-cli
   ];
   programs.zsh = {
     enable = true;
