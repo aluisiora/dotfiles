@@ -76,8 +76,13 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'tmux-sessionizer^M'
 
-# Misc
+# Node and npm
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 
+# Local settings
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
+
