@@ -17,8 +17,6 @@
       gcc
       ghostty
       gnumake
-      gnupg
-      pass
       psmisc
       python3
       yazi

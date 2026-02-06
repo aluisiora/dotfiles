@@ -27,6 +27,17 @@
     services.displayManager.sddm.astronaut-embedded-theme = "purple_leaves";
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
+    programs.seahorse.enable = true;
+    programs.gnupg = {
+      dirmngr.enable = true;
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+        enableBrowserSocket = true;
+        enableExtraSocket = true;
+        pinentryPackage = pkgs.pinentry-gnome3;
+      };
+    };
     programs.dconf = {
       enable = true;
       profiles.user.databases = [
@@ -60,6 +71,7 @@
       gnome-secrets
       gnome-text-editor
       gnome-themes-extra
+      gnupg
       hicolor-icon-theme
       kdePackages.breeze-icons
       kdePackages.qt6ct
@@ -67,7 +79,9 @@
       loupe
       nautilus
       nwg-look
+      pass
       papers
+      pinentry-gnome3
       seahorse
       showtime
       wev

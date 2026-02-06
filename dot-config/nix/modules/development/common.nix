@@ -17,6 +17,7 @@
       bat
       carapace
       cargo
+      cloc
       devbox
       devenv
       diff-so-fancy
@@ -45,6 +46,7 @@
       sqlite
       stow
       stylua
+      tokei
       tldr
       tmux
       tree-sitter
