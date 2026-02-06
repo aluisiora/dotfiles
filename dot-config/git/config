@@ -16,8 +16,8 @@
     showStash = true
     showUntrackedFiles = all
 [diff]
-    external = difft
-    tool = difftastic
+#    external = difft
+#    tool = difftastic
     context = 3
     renames = copies
     interHunkContext = 10
