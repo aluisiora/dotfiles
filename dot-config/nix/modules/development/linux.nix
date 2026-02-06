@@ -14,12 +14,14 @@
     virtualisation.docker.enable = true;
     virtualisation.docker.enableOnBoot = true;
     environment.systemPackages = with pkgs; [
-      psmisc
-      yazi
-      gnumake
       gcc
-      python3
       ghostty
+      gnumake
+      gnupg
+      pass
+      psmisc
+      python3
+      yazi
     ];
     services.dbus.packages = [ pkgs.ghostty ];
     systemd.packages = [ pkgs.ghostty ];
