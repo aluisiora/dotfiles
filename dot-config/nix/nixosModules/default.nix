@@ -19,9 +19,16 @@
     coreutils
     findutils
     file
+    openssl
+    libsecret
   ];
-
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      openssl
+      libsecret
+    ];
+  };
 
   nix.gc = {
     automatic = true;
