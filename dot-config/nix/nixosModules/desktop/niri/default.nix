@@ -28,6 +28,7 @@
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
     programs.seahorse.enable = true;
+    programs.gpu-screen-recorder.enable = true;
     programs.gnupg = {
       dirmngr.enable = true;
       agent = {
