@@ -20,8 +20,15 @@
       psmisc
       python3
       yazi
+      openssl
+      libsecret
     ];
     services.dbus.packages = [ pkgs.ghostty ];
     systemd.packages = [ pkgs.ghostty ];
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+      openssl
+      libsecret
+    ];
   };
 }

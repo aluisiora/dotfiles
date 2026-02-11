@@ -20,15 +20,17 @@ in
       cava
       evolution
       gnome-control-center
-      libsecret
       noctalia-shell
       playerctl
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
     ];
 
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
     services.gvfs.enable = true;
     programs.dconf.enable = true;
+    programs.gpu-screen-recorder.enable = true;
 
     # Enable the Evolution Data Server
     services.gnome.evolution-data-server.enable = true;
