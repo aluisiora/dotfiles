@@ -53,12 +53,15 @@ in {
       enableDefaultPackages = true;
       fontDir.enable = true;
       packages = with pkgs; [
+        _0xproto
         monaspace
+        maple-mono.NF
         noto-fonts
         noto-fonts-cjk-sans
         dejavu_fonts
         font-awesome
         jetbrains-mono
+        googlesans-code
         inter
         roboto
         ubuntu-sans
@@ -72,24 +75,17 @@ in {
       ];
       fontconfig = {
         defaultFonts = {
-          emoji = [
-            "Apple Color Emoji"
-            "Noto Color Emoji"
-          ];
-          sansSerif = [
-            "Lato"
-            "Dejavu Sans"
-          ];
+          emoji = [ "Apple Color Emoji" "Noto Color Emoji" ];
+          sansSerif = [ "Lato" "Dejavu Sans" ];
           serif = [ "DejaVu Serif" ];
-          monospace = [ "Monaspace Neon" ];
+          monospace = [ "0xProto" "Monaspace Neon" ];
         };
       };
     };
-    environment.systemPackages =
-      with pkgs;
-      [
-        ghostty
-      ]
-      ++ config.desktop.extraPackages;
+    environment.systemPackages = with pkgs; [
+      ghostty
+    ];
+    services.dbus.packages = [ pkgs.ghostty ];
+    systemd.packages = [ pkgs.ghostty ];
   };
 }

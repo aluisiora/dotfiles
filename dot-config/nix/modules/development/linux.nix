@@ -15,7 +15,6 @@
     virtualisation.docker.enableOnBoot = true;
     environment.systemPackages = with pkgs; [
       gcc
-      ghostty
       gnumake
       psmisc
       python3
@@ -23,8 +22,6 @@
       openssl
       libsecret
     ];
-    services.dbus.packages = [ pkgs.ghostty ];
-    systemd.packages = [ pkgs.ghostty ];
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
       openssl
