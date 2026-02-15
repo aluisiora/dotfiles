@@ -1,3 +1,3 @@
-config-file = ?config.private
+config-file = ?config.local
 theme = Catppuccin Mocha
 shell-integration-features = ssh-terminfo,ssh-env
