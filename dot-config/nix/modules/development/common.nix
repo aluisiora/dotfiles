@@ -25,7 +25,6 @@
       fd
       fixjson
       fzf
-      gemini-cli
       git
       hadolint
       jq
@@ -40,7 +39,6 @@
       nixd
       nixfmt
       nodejs_24
-      posting
       ripgrep
       rsync
       sqlite
