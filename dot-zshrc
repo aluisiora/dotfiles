@@ -65,6 +65,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' query-string ''
 
+# Disable terminal flow control so C-s can be used by tmux
+stty -ixon
+
 # Aliases
 alias ls="ls --color=auto"
 alias ll="ls -lah --color=auto"
