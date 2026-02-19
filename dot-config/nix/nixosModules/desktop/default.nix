@@ -5,10 +5,7 @@
   inputs,
   ...
 }:
-let
-  system = pkgs.stdenv.hostPlatform.system;
-  apple-color-emoji = inputs.apple-emoji.packages.${system}.default;
-in {
+{
   imports = [
     ./gnome
     ./niri
@@ -70,12 +67,11 @@ in {
         vista-fonts
         liberation_ttf
         # Emoji
-        apple-color-emoji
         noto-fonts-color-emoji
       ];
       fontconfig = {
         defaultFonts = {
-          emoji = [ "Apple Color Emoji" "Noto Color Emoji" ];
+          emoji = [ "Noto Color Emoji" ];
           sansSerif = [ "Lato" "Dejavu Sans" ];
           serif = [ "DejaVu Serif" ];
           monospace = [ "0xProto" "Monaspace Neon" ];

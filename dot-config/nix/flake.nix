@@ -19,10 +19,6 @@
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
