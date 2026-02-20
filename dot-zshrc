@@ -77,7 +77,16 @@ bindkey -v # vi mode
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -s '^e' 'tmux-sessionizer^M'
+# bindkey -s '^e' 'tmux-sessionizer^M'
+
+function run-sesh-picker() {
+  exec </dev/tty
+  exec <&1
+  ~/.local/bin/sesh-picker
+  zle reset-prompt > /dev/null 2>&1 || true
+}
+zle -N run-sesh-picker
+bindkey '^P' run-sesh-picker
 
 # Node and npm
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"

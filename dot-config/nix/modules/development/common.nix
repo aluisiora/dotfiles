@@ -41,6 +41,7 @@
       nodejs_24
       ripgrep
       rsync
+      sesh
       sqlite
       stow
       stylua
