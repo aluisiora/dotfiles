@@ -27,6 +27,7 @@
       fzf
       git
       hadolint
+      hurl
       jq
       lazydocker
       lazygit
