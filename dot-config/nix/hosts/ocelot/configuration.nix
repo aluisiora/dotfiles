@@ -69,6 +69,7 @@ in
     ];
   };
   services.solaar.enable = true;
+  nix.settings.download-buffer-size = 524288000;
 
   # Custom modules
   development.enable = true;
