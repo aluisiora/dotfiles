@@ -43,7 +43,7 @@ in
 
     environment.systemPackages = with pkgs; [
       rose-pine-cursor
-      xorg.xrdb
+      libxcb
       sddm-astronaut-theme
     ];
   };
