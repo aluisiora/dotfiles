@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ./common.nix ./phpmake.nix ];
+  imports = [ ./common.nix ];
 
   config = lib.mkIf config.development.enable {
     environment.variables = {
