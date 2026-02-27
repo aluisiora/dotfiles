@@ -1,0 +1,43 @@
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf config.development.enable {
+    environment.systemPackages = with pkgs; [
+      autoconf
+      bison
+      curl
+      freetype
+      gcc
+      gd
+      gettext
+      glibc
+      gmp
+      icu
+      imagemagick
+      krb5
+      libedit
+      libiconv
+      libjpeg
+      libpng
+      libpq
+      libsodium
+      libxml2
+      libzip
+      oniguruma
+      openssl
+      pkg-config
+      re2c
+      sqlite
+      zlib
+    ];
+    programs.nix-ld.libraries = with pkgs; [
+      openssl
+      libsecret
+      gettext
+    ];
+  };
+}

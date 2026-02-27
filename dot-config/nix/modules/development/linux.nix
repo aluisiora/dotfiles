@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ./common.nix ];
+  imports = [ ./common.nix ./phpmake.nix ];
 
   config = lib.mkIf config.development.enable {
     environment.variables = {
@@ -21,17 +21,6 @@
       yazi
       openssl
       libsecret
-
-      # For PHP compilation
-      re2c
-      gd
-      libpq
-      libzip
-      autoconf
-      bison
-      libxml2
-      oniguruma
-      sqlite
     ];
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [

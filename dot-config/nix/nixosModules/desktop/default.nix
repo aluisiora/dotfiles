@@ -57,7 +57,6 @@
         noto-fonts-cjk-sans
         dejavu_fonts
         font-awesome
-        jetbrains-mono
         googlesans-code
         inter
         roboto
