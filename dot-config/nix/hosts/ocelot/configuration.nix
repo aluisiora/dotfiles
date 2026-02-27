@@ -12,6 +12,7 @@ in
     ./apple-studio-display.nix
     ./zsa-voyager.nix
     ./vpn.nix
+    ./php.nix
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
