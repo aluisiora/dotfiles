@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
-selected=$({ fd -H -I '^\.git$' ~/Projects --max-depth 5 -x dirname; echo "$HOME/.config/nvim" } | fzf)
+selected=$({ fd -H -I '^\.git$' ~/[Pp]rojects \
+  --exclude vendor --exclude node_modules \
+  --max-depth 5 -x dirname; \
+  echo "$HOME/.config/nvim"; \
+  echo "$HOME/.config/nix" } | fzf)
 
 if [[ -z $selected ]]; then
     exit 0
