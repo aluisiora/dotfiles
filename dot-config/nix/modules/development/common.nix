@@ -1,9 +1,14 @@
 {
   pkgs,
+  inputs,
   config,
   lib,
   ...
 }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  worktrunk = inputs.worktrunk.packages.${system}.default;
+in
 {
   options = {
     development.enable = lib.mkEnableOption "development utilities";
@@ -51,6 +56,7 @@
       tree-sitter
       usql
       wget
+      worktrunk
       yazi
       yq
       zoxide
