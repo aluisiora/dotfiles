@@ -18,9 +18,9 @@
       carapace
       cargo
       cloc
+      delta
       devbox
       devenv
-      diff-so-fancy
       difftastic
       fd
       fixjson
