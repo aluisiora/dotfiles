@@ -1,14 +1,14 @@
 [include]
     path = ./config.private
 [user]
-	name = Aluisio Amaral
+	  name = Aluisio Amaral
 [core]
     editor = nvim
     compression = 9
     whitespace = error
     preloadindex = true
 [init]
-        defaultBranch = main
+    defaultBranch = main
 [branch]
     sort = -committerdate
 [status]
@@ -16,8 +16,6 @@
     showStash = true
     showUntrackedFiles = all
 [diff]
-#    external = difft
-#    tool = difftastic
     context = 3
     renames = copies
     interHunkContext = 10
@@ -38,30 +36,11 @@
     pushNonFastForward = false
     statusHints = false
 [pager]
-    branch = false
-    tag = false
-    difftool = true
+   branch = fzf --ansi
+   tag = fzf --ansi
 [log]
     graphColors = blue,yellow,cyan,magenta,green,red
-[difftool]
-    prompt = false
-[difftool "difftastic"]
-    # See `man git-difftool` for a description of MERGED, LOCAL and REMOTE.
-    cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
-[color "decorate"]
-    HEAD = red
-    branch = blue
-    tag = yellow
-    remoteBranch = magenta
-[color "branch"]
-    current = magenta
-    local = default
-    remote = yellow
-    upstream = green
-    plain = blue
-[color "diff"]
-    meta = black bold
-    frag = magenta
-    context = white
-    whitespace = yellow reverse
-    old = red 
+[color]
+	ui = auto
+
+# vim: ft=conf
