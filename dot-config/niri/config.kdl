@@ -1,4 +1,3 @@
-
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
@@ -280,9 +279,9 @@ animations {
 }
 
 // Workspaces
-workspace "coding"
-workspace "browser"
 workspace "social"
+workspace "browser"
+workspace "coding"
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
@@ -343,13 +342,15 @@ window-rule {
 
 // Playwright browsers
 window-rule {
-    match app-id="Chromium-browser"
+    match app-id="chromium-browser"
+    match title=r#"for Testing$"#
     open-floating true
     open-focused false
+    default-floating-position x=32 y=32 relative-to="top-right"
 }
 window-rule {
-    match app-id="Chromium-browser" is-active=false
-    opacity 0.5
+    match app-id="chromium-browser" is-active=false
+    opacity 0.6
 }
 
 // Block out two password managers from screen capture and slack.
