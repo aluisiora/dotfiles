@@ -85,6 +85,7 @@
       seahorse
       showtime
       wev
+      wl-clipboard
       xdg-user-dirs
       xdg-user-dirs-gtk
       xeyes
