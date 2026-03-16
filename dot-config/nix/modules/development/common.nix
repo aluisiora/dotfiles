@@ -56,7 +56,6 @@ in
       tree-sitter
       usql
       wget
-      worktrunk
       yazi
       yq
       zoxide
