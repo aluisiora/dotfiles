@@ -54,14 +54,14 @@ bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-function tmux-sessionizer() {
+function sessionize-project() {
   exec </dev/tty
   exec <&1
   ~/.local/bin/tmux-sessionizer
   zle reset-prompt > /dev/null 2>&1 || true
 }
-zle -N tmux-sessionizer
-bindkey '^e' tmux-sessionizer
+zle -N sessionize-project
+bindkey '^e' sessionize-project
 
 # Node and npm
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
