@@ -79,7 +79,6 @@
     };
     environment.systemPackages = with pkgs; [
       ghostty
-      alacritty
     ];
     services.dbus.packages = [ pkgs.ghostty ];
     systemd.packages = [ pkgs.ghostty ];
