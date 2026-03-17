@@ -16,6 +16,7 @@ in
     ../../nixosModules
     ../../modules
     ../../modules/development/linux.nix
+    inputs.home-manager.nixosModules.home-manager
     inputs.solaar.nixosModules.default
   ];
 
@@ -48,11 +49,16 @@ in
     "root"
     "${user}"
   ];
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    users = {
+      "${user}" = (import ./home.nix { inherit pkgs; inherit user; });
+    };
+  };
   environment.systemPackages = with pkgs; [
     distrobox
-    slack
-    gnome-boxes
-    obsidian
   ];
   programs.zsh = {
     enable = true;

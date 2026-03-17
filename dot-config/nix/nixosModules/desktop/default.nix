@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -77,10 +76,5 @@
         };
       };
     };
-    environment.systemPackages = with pkgs; [
-      ghostty
-    ];
-    services.dbus.packages = [ pkgs.ghostty ];
-    systemd.packages = [ pkgs.ghostty ];
   };
 }
