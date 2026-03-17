@@ -1,4 +1,5 @@
 font-family = Maple Mono NF
+adjust-cell-height = 10%
 
 # Font features ===============
 font-feature = calt
@@ -27,3 +28,4 @@ font-feature = ss07=1
 # Double / back rows >>=
 font-feature = ss08=1
 
+# vim:ft=ghostty
