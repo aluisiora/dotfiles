@@ -23,7 +23,6 @@ in
       carapace
       cargo
       cloc
-      delta
       devbox
       devenv
       difftastic
