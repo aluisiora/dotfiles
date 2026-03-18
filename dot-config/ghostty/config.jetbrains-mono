@@ -1,0 +1,4 @@
+font-synthetic-style = false
+font-feature = -calt, -liga, -dlig
+
+# vim:ft=ghostty
