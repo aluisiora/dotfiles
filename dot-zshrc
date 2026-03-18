@@ -27,9 +27,9 @@ zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
-[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 [ -x "$(command -v mise)" ] && eval "$(mise activate zsh)"
 [ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
+[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 
 # completions, autosuggestions & syntax highlighting
 zinit light zsh-users/zsh-completions
@@ -47,6 +47,7 @@ stty -ixon
 # Aliases
 alias ls="ls --color=auto"
 alias ll="ls -lah --color=auto"
+alias gwt="new-git-worktree"
 
 # Keybindings
 bindkey -v # vi mode
