@@ -1,3 +1,3 @@
 config-file = ?config.local
-theme = Catppuccin Mocha
+theme = Vague
 shell-integration-features = ssh-terminfo,ssh-env

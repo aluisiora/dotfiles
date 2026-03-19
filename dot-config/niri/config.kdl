@@ -190,17 +190,17 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         width 3
-        active-color "#b4befe"
-        inactive-color "#313244"
+        active-color "#9bb4bc"
+        inactive-color "#1c1c24"
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
         off
         width 2
-        active-color "#88c0d0"
-        inactive-color "#3b4252"
-        urgent-color "#bf616a"
+        active-color "#9bb4bc"
+        inactive-color "#1c1c24"
+        urgent-color "#d8647e"
     }
 
     // You can enable drop shadows for windows.
@@ -329,7 +329,7 @@ window-rule {
     match is-window-cast-target=true
     focus-ring {
         width 4
-        active-color "#f38ba8"
+        active-color "#d8647e"
     }
     shadow {
         on
