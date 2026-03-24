@@ -18,7 +18,6 @@
       networkmanager-strongswan
     ];
   };
-  programs.openvpn3.enable = true;
   services.xl2tpd.enable = true;
   services.strongswan = {
     enable = true;
