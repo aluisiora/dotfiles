@@ -53,7 +53,6 @@ in
       tldr
       tmux
       tree-sitter
-      usql
       wget
       yazi
       yq
