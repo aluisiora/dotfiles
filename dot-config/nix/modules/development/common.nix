@@ -1,14 +1,9 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
   ...
 }:
-let
-  system = pkgs.stdenv.hostPlatform.system;
-  worktrunk = inputs.worktrunk.packages.${system}.default;
-in
 {
   options = {
     development.enable = lib.mkEnableOption "development utilities";
@@ -30,8 +25,10 @@ in
       fixjson
       fzf
       git
+      ghostscript
       hadolint
       hurl
+      imagemagick
       jq
       lazydocker
       lazygit
@@ -49,9 +46,9 @@ in
       sqlite
       stow
       stylua
-      tokei
       tldr
       tmux
+      tokei
       tree-sitter
       wget
       yazi
