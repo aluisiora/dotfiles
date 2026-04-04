@@ -41,6 +41,7 @@
       nixd
       nixfmt
       nodejs_24
+      postgresql
       ripgrep
       rsync
       sqlite

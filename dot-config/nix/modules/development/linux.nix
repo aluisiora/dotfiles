@@ -16,11 +16,11 @@
     environment.systemPackages = with pkgs; [
       gcc
       gnumake
+      libsecret
+      openssl
       psmisc
       python3
       yazi
-      openssl
-      libsecret
     ];
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
