@@ -1,29 +1,38 @@
 { pkgs, ... }:
+let
+  composerEnv = pkgs.php84Packages.composer;
+  phpEnv = pkgs.php84.buildEnv {
+    extensions = ({ enabled, all }: enabled ++ (with all; [
+      bcmath
+      ctype
+      curl
+      dom
+      fileinfo
+      gd
+      grpc
+      intl
+      mbstring
+      memcached
+      openssl
+      opentelemetry
+      pdo
+      pdo_mysql
+      pdo_sqlite
+      protobuf
+      redis
+      session
+      sockets
+      tokenizer
+      xdebug
+      zip
+    ]));
+    extraConfig = ''
+      memory_limit = 4G
+      xdebug.mode=develop,coverage,debug
+      xdebug.start_with_request=trigger
+    '';
+  };
+in
 {
-  environment.systemPackages = with pkgs; [
-    php83
-    php83Packages.composer
-    php83Extensions.bcmath
-    php83Extensions.ctype
-    php83Extensions.curl
-    php83Extensions.dom
-    php83Extensions.fileinfo
-    php83Extensions.gd
-    php83Extensions.grpc
-    php83Extensions.intl
-    php83Extensions.mbstring
-    php83Extensions.memcached
-    php83Extensions.openssl
-    php83Extensions.opentelemetry
-    php83Extensions.pdo
-    php83Extensions.pdo_mysql
-    php83Extensions.pdo_sqlite
-    php83Extensions.protobuf
-    php83Extensions.redis
-    php83Extensions.session
-    php83Extensions.sockets
-    php83Extensions.tokenizer
-    php83Extensions.xdebug
-    php83Extensions.zip
-  ];
+  environment.systemPackages = [ phpEnv composerEnv pkgs.memcached ];
 }
