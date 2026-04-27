@@ -1,0 +1,20 @@
+" grr: Go to references
+nmap grr <Action>(FindUsages)
+" gra: Code actions
+nmap gra <Action>(ShowIntentionActions)
+" grn: Rename
+nmap grn <Action>(RenameElement)
+" gri: Go to implementation
+nmap gri <Action>(GotoImplementation)
+" grd: Go to definition (though 'gd' works, this matches Nvim)
+nmap grd <Action>(GotoDefinition)
+" gO: Symbols/Outline
+nmap gO <Action>(FileStructurePopup)
+" K: Hover/Documentation
+nmap K <Action>(ShowHoverInfo)
+" Diagnostic navigation
+nmap [d <Action>(GotoPrevError)
+nmap ]d <Action>(GotoNextError)
+" Disable classic mappings
+nmap gd <nop>
+nmap gD <nop>
