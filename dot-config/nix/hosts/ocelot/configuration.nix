@@ -64,17 +64,6 @@ in
     enable = true;
     enableGlobalCompInit = false;
   };
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-pipewire-audio-capture
-      obs-composite-blur
-      obs-backgroundremoval
-      obs-composite-blur
-    ];
-  };
   services.solaar.enable = true;
   nix.settings.download-buffer-size = 524288000;
 
