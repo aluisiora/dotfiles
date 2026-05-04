@@ -59,6 +59,7 @@ in
   };
   environment.systemPackages = with pkgs; [
     distrobox
+    claude-code
   ];
   programs.zsh = {
     enable = true;
