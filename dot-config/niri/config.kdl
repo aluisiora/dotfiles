@@ -233,6 +233,7 @@ layout {
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
+spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "~/.local/bin/initialize-asd-brightness"
 
 hotkey-overlay {

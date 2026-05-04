@@ -2,20 +2,13 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 let
-  system = pkgs.stdenv.hostPlatform.system;
-  noctalia-shell = inputs.noctalia.packages.${system}.default.override {
-    calendarSupport = true;
-  };
+  noctalia-shell = (pkgs.noctalia-shell.override { calendarSupport = true; });
 in
 {
-  imports = [ inputs.noctalia.nixosModules.default ];
-
   config = lib.mkIf config.programs.niri.enable {
-    services.noctalia-shell.enable = true;
     environment.systemPackages = with pkgs; [
       cava
       evolution
