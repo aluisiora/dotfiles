@@ -1,3 +1,8 @@
+let mapleader = " "
+
+" Navigation
+nmap <leader><space> <Action>(SearchEverywhere)
+nmap <leader>. <Action>(RecentFiles)
 " grr: Go to references
 nmap grr <Action>(FindUsages)
 " gra: Code actions
@@ -15,6 +20,8 @@ nmap K <Action>(ShowHoverInfo)
 " Diagnostic navigation
 nmap [d <Action>(GotoPrevError)
 nmap ]d <Action>(GotoNextError)
+" Formatting
+nmap grf <Action>(ReformatCode)
 " Disable classic mappings
 nmap gd <nop>
 nmap gD <nop>
