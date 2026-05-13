@@ -60,6 +60,10 @@
       lato
     ];
 
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+      glib
+    ];
     environment.systemPackages = with pkgs; [
       adwaita-icon-theme
       bluetui
@@ -72,6 +76,7 @@
       gnome-text-editor
       gnome-themes-extra
       gnupg
+      glib
       hicolor-icon-theme
       kdePackages.breeze-icons
       kdePackages.qt6ct
