@@ -60,10 +60,6 @@
       lato
     ];
 
-    programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [
-      glib
-    ];
     environment.systemPackages = with pkgs; [
       adwaita-icon-theme
       bluetui
@@ -95,6 +91,33 @@
       xdg-user-dirs-gtk
       xeyes
       xwayland-satellite
+    ];
+
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+      glib
+      # Standard browser/Chromium dependencies
+      nss
+      nspr
+      dbus
+      atk
+      cups
+      libdrm
+      libgbm
+      mesa
+      pango
+      cairo
+      libX11
+      libXcomposite
+      libXdamage
+      libXext
+      libXfixes
+      libXrandr
+      libxcb
+      expat
+      libxkbcommon
+      alsa-lib
+      wayland
     ];
   };
 }
