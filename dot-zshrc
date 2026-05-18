@@ -26,6 +26,12 @@ zstyle ':fzf-tab:*' query-string ''
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
+# homebrew
+if [ -f /opt/homebrew/bin/brew ]; then
+  export PATH="$PATH:/opt/homebrew/bin"
+  eval "$(brew shellenv zsh)"
+fi
+
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
 [ -x "$(command -v mise)" ] && eval "$(mise activate zsh)"
 [ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
