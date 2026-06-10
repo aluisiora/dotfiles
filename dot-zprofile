@@ -1,3 +1,4 @@
+# XDG compliant directories
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -10,4 +11,24 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
 
-[ -x "$(command -v mise)" ] && eval "$(mise activate bash --shims)"
+# Cross-platform Homebrew activation
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)" # MacOS
+elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # Linux
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# Ensure Mise shims are available globally to GUI apps/IDEs
+export MISE_TRUSTED_CONFIG_PATHS="$HOME/Projects"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# NodeJS and NPM
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'

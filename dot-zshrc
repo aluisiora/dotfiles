@@ -26,12 +26,6 @@ zstyle ':fzf-tab:*' query-string ''
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-# homebrew
-if [ -f /opt/homebrew/bin/brew ]; then
-  export PATH="$PATH:/opt/homebrew/bin"
-  eval "$(brew shellenv zsh)"
-fi
-
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
 [ -x "$(command -v mise)" ] && eval "$(mise activate zsh)"
 [ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
@@ -40,7 +34,6 @@ fi
 # completions, autosuggestions & syntax highlighting
 zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 [ -x "$(command -v carapace)" ] && source <(carapace _carapace)
 
 zinit light Aloxaf/fzf-tab
@@ -69,13 +62,6 @@ function sessionize-project() {
 }
 zle -N sessionize-project
 bindkey '^e' sessionize-project
-
-# Node and npm
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
-export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
-export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 
 # Local settings
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
