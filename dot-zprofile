@@ -20,6 +20,8 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
+export HOMEBREW_NO_ENV_HINTS=1
+
 # Ensure Mise shims are available globally to GUI apps/IDEs
 export MISE_TRUSTED_CONFIG_PATHS="$HOME/Projects"
 export PATH="$HOME/.local/share/mise/shims:$PATH"
