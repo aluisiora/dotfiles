@@ -1,0 +1,12 @@
+*
+!check-nixos-updates.sh
+!gdiff
+!git-delete-old-branches
+!initialize-asd-brightness
+!new-git-worktree
+!new-tmux-session-here
+!niri-wake-up
+!nixos-update.sh
+!sesh-picker
+!tmux-sessionizer
+!vanta-setup.sh
