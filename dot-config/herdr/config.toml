@@ -28,7 +28,7 @@ auto_switch = false
 [terminal]
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
-# default_shell = ""
+default_shell = "/bin/zsh"
 
 # Startup mode for new interactive pane shells: "auto", "login", or "non_login".
 # "auto" uses login shells on macOS and keeps the current behavior elsewhere.
@@ -219,7 +219,7 @@ enabled = false
 [session]
 # Resume supported AI-agent panes into their native conversation sessions after
 # a Herdr server restart. Requires official integrations that report session refs.
-# resume_agents_on_restore = true
+resume_agents_on_restore = true
 
 [remote]
 # Whether herdr manages the ssh config used for the `herdr --remote` bridge.
