@@ -63,6 +63,9 @@ function sessionize-project() {
 zle -N sessionize-project
 bindkey '^e' sessionize-project
 
+# opencode
+[ -d $HOME/.opencode/bin ] && export PATH="$HOME/.opencode/bin:$PATH"
+
 # Local settings
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 
