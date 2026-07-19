@@ -1,0 +1,16 @@
+repo = "mobile"
+
+[[tabs]]
+name = "nvim"
+command = "nvim"
+
+[[tabs]]
+name = "gemini"
+command = "agy"
+
+[[tabs]]
+name = "runner"
+
+[[tabs]]
+name = "tty"
+

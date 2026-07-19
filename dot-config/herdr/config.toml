@@ -71,8 +71,8 @@ detach = "prefix+d"
 # workspace_picker = "prefix+w"
 goto = "prefix+/"
 # new_workspace = "prefix+shift+n"
-new_worktree = "prefix+shift+g"
-open_worktree = "prefix+g"
+new_worktree = "prefix+shift+t"
+open_worktree = "prefix+t"
 remove_worktree = "prefix+q"
 # rename_workspace = "prefix+shift+w"
 close_workspace = "prefix+shift+q"
@@ -117,10 +117,23 @@ focus_agent = "prefix+alt+1..9"        # optional indexed binding, e.g. "prefix+
 # Custom commands use the same binding syntax.
 # type = "shell" runs detached in the background.
 # type = "pane" opens a temporary pane and closes it when the command exits.
-# [[keys.command]]
-# key = "prefix+alt+g"
-# type = "pane"
-# command = "lazygit"
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+decription = "lazygit"
+
+[[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.projects"
+description = "herdr-plus: projects"
+
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.quick-actions"
+description = "herdr-plus: quick actions"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -129,8 +142,8 @@ focus_agent = "prefix+alt+1..9"        # optional indexed binding, e.g. "prefix+
 # workspaces = "" # e.g. "ctrl+shift" makes ctrl+shift+1..9 switch workspaces directly
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
 
-# [worktrees]
-# directory = "~/.herdr/worktrees"
+[worktrees]
+directory = "~/Projects/.worktrees"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
