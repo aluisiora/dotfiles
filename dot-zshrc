@@ -34,6 +34,7 @@ zinit light sindresorhus/pure
 # completions, autosuggestions & syntax highlighting
 zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
+[ -x "$(command -v herdr)" ] && source <(herdr completion zsh)
 [ -x "$(command -v carapace)" ] && source <(carapace _carapace)
 
 zinit light Aloxaf/fzf-tab
