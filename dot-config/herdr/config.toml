@@ -1,4 +1,3 @@
-include = ["~/.config/herdr/local.toml"]
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -121,7 +120,7 @@ focus_agent = "prefix+alt+1..9"        # optional indexed binding, e.g. "prefix+
 key = "prefix+g"
 type = "pane"
 command = "lazygit"
-decription = "lazygit"
+description = "lazygit"
 
 [[keys.command]]
 key = "prefix+e"
