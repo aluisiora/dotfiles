@@ -11,129 +11,12 @@ environment {
 }
 
 xwayland-satellite {
-    // off
     path "xwayland-satellite"
-}
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
-input {
-    keyboard {
-        xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
-            // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
-        }
-
-        track-layout "window"
-
-        // Enable numlock on startup, omitting this setting disables it.
-        numlock
-    }
-
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
-    touchpad {
-        // off
-        // tap
-        dwt
-        // dwtp
-        // drag false
-        // drag-lock
-        natural-scroll
-        accel-speed 0.3
-        accel-profile "adaptive"
-        scroll-method "two-finger"
-        // disabled-on-external-mouse
-        // scroll-factor horizontal=1.0 vertical=-2.0
-    }
-
-    mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.6
-        accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
-
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
-    }
-
-    trackball {
-        accel-speed 0.05
-        accel-profile "adaptive"
-    }
-
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
-    warp-mouse-to-focus
-
-    // Focus windows and outputs automatically when moving the mouse into them.
-    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="0%"
 }
 
 cursor {
     xcursor-theme "Adwaita"
     hide-when-typing
-}
-
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-output "DP-3" {
-    mode "5120x2880@60.0"
-    scale 2
-    position x=0 y=0
-}
-/-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -189,18 +72,7 @@ layout {
 
     // You can change how the focus ring looks.
     focus-ring {
-        width 3
-        active-color "#99C1F1"
-        inactive-color "#1c1c24"
-    }
-
-    // You can also add a border. It's similar to the focus ring, but always visible.
-    /-border {
-        off
         width 2
-        active-color "#9bb4bc"
-        inactive-color "#1c1c24"
-        urgent-color "#d8647e"
     }
 
     // You can enable drop shadows for windows.
@@ -217,7 +89,7 @@ layout {
     // Left and right struts will cause the next window to the side to always be visible.
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
-    struts {
+    /-struts {
         left 10
         right 2
         top 2
@@ -233,8 +105,7 @@ layout {
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
-spawn-at-startup "noctalia-shell"
-spawn-sh-at-startup "~/.local/bin/initialize-asd-brightness"
+// spawn-sh-at-startup "~/.local/bin/initialize-asd-brightness"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -284,84 +155,6 @@ workspace "social"
 workspace "browser"
 workspace "coding"
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Global window rounded corners
-window-rule {
-    geometry-corner-radius 20
-    clip-to-geometry true
-}
-
-// Set the overview wallpaper on the backdrop.
-layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
-}
-
-// Pin apps to workspaces
-window-rule {
-    match app-id=r#"chrome-"# title="^Google Calendar"
-    match app-id=r#"chrome-"# title="^Google Meet"
-    match app-id="Slack"
-    open-on-workspace "social"
-}
-
-// Maximized apps
-window-rule {
-    match app-id="Slack"
-    match app-id="app.zen_browser.zen"
-    open-maximized true
-}
-
-// Floating apps
-window-rule {
-    match app-id="org.gnome.Nautilus" title="^Open Files$" // Select computer file
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    match app-id="org.gnome.Calculator"
-    match app-id="org.gnome.World.Secrets"
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    open-floating true
-}
-
-// Mark screencasted window
-window-rule {
-    match is-window-cast-target=true
-    focus-ring {
-        width 4
-        active-color "#d8647e"
-    }
-    shadow {
-        on
-        softness 8
-        spread 6
-        offset x=0 y=0
-        color "#f38ba870"
-    }
-}
-
-// Playwright browsers
-window-rule {
-    match app-id="chromium-browser"
-    match title=r#"for Testing$"#
-    open-floating true
-    open-focused false
-    default-floating-position x=32 y=32 relative-to="top-right"
-}
-window-rule {
-    match app-id="chromium-browser" is-active=false
-    opacity 0.6
-}
-
-// Block out two password managers from screen capture and slack.
-window-rule {
-    match app-id="org.gnome.World.Secrets"
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id="Slack"
-    block-out-from "screen-capture"
-}
-
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -379,29 +172,7 @@ binds {
 
     Super+Return hotkey-overlay-title="Terminal" { spawn "ghostty" "+new-window"; }
 
-    // Dank Material Shell keybinds
-    Super+Space           hotkey-overlay-title="Application launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    // Super+Space           hotkey-overlay-title="Application launcher" { spawn "hamr" "toggle"; }
-    XF86Search            { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Super+Comma           hotkey-overlay-title="Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-    Super+N               hotkey-overlay-title="Notification history" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
-    Ctrl+Alt+Delete       hotkey-overlay-title="Power options" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-    Super+Ctrl+Q          hotkey-overlay-title="Lock and suspend" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
-    XF86DoNotDisturb      { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleDND"; }
-
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-
-    XF86AudioPlay         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-    XF86AudioPrev         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "previous"; }
-    XF86AudioNext         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
-
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
-    XF86Launch6           allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86Launch5           allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    // Noctalia shell keybinds
 
     Super+B { set-dynamic-cast-window; }
     Super+Shift+B { set-dynamic-cast-monitor; }
@@ -606,7 +377,7 @@ binds {
     // Makes the column "fill the rest of the space".
     // Super+Ctrl+F { expand-column-to-available-width; }
 
-    Super+C { center-column; }
+    Super+Shift+C { center-column; }
 
     // Center all fully visible columns on screen.
     Super+Alt+C { center-visible-columns; }
@@ -627,8 +398,8 @@ binds {
     Super+Alt+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Super+V       { toggle-window-floating; }
-    Super+Alt+V   { switch-focus-between-floating-and-tiling; }
+    Super+Shift+V   { toggle-window-floating; }
+    Super+Alt+V     { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -665,3 +436,9 @@ binds {
     // moving the mouse or pressing any other key.
     // Super+Shift+P { power-off-monitors; }
 }
+
+include "inputs.kdl"
+include "outputs.kdl"
+include "rules.kdl"
+include "noctalia.kdl"
+include "noctalia-shell.kdl"
