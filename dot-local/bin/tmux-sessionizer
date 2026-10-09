@@ -4,10 +4,29 @@ WORKING_DIR=$1
 SESSION_NAME=$2
 
 if [[ -z $WORKING_DIR ]]; then
-  WORKING_DIR=$({ fd -H -I -t d '^\.git$' ~/[Pp]rojects \
-    --exclude vendor --exclude node_modules \
-    --max-depth 5 -x dirname; \
-    echo "$HOME/.config/nvim" } | fzf)
+  WORKING_DIR=$({
+    # Static custom directories
+    echo "$HOME/.config/nvim"
+
+    #  All main projects directly inside $HOME/Projects
+    for proj in "$HOME/Projects"/*; do
+      [ -d "$proj" ] && [ -e "$proj/.git" ] || continue
+      echo "$proj"
+    done
+
+    # Worktrees derived from those projects
+    for proj in "$HOME/Projects"/*; do
+      [ -d "$proj" ] && [ -e "$proj/.git" ] || continue
+      git -C "$proj" worktree list --porcelain 2>/dev/null | while read -r line; do
+        case "$line" in
+          "worktree "*)
+            wt="${line#worktree }"
+            [ "$wt" != "$proj" ] && echo "$wt"
+            ;;
+        esac
+      done
+    done
+  } | awk '!seen[$0]++' | fzf)
 fi
 
 if [[ -z $WORKING_DIR ]]; then
