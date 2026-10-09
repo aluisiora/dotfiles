@@ -8,7 +8,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # history & options
 [ ! -d "$XDG_STATE_HOME/zsh" ] && mkdir $XDG_STATE_HOME/zsh
-HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 setopt appendhistory
@@ -16,6 +15,8 @@ setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt no_beep
 
 # zstyle completion settings
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -31,14 +32,17 @@ zinit light sindresorhus/pure
 [ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
 
+# Autosuggestions
+export DEJA_ACCEPT_KEY=^Y
+zinit ice wait"0" lucid depth=1 pick"deja.plugin.zsh"
+zinit light Giammarco-Ferranti/deja
+
 # completions, autosuggestions & syntax highlighting
-zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
 [ -x "$(command -v herdr)" ] && source <(herdr completion zsh)
 [ -x "$(command -v carapace)" ] && source <(carapace _carapace)
 
 zinit light Aloxaf/fzf-tab
-zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
 # Disable terminal flow control so C-s can be used by tmux
@@ -51,7 +55,6 @@ alias gwt="new-git-worktree"
 
 # Keybindings
 bindkey -v # vi mode
-bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
@@ -67,3 +70,4 @@ bindkey '^e' sessionize-project
 # Local settings
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 
+# vim:ft=zsh
