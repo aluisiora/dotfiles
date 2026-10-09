@@ -1,3 +1,2 @@
 config-file = ?config.local
-theme = One Half Dark
 shell-integration-features = ssh-terminfo,ssh-env
