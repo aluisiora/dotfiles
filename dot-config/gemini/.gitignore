@@ -1,0 +1,35 @@
+# Ignore all files by default in gemini
+*
+
+# Allow traversing subdirectories
+!*/
+
+# Whitelist allowed configuration files only
+!settings.json
+!config/config.json
+!antigravity-cli/settings.json
+!antigravity-cli/statusline.sh
+!.gitignore
+
+# Explicitly deny sensitive credentials and runtime data
+mcp_config.json
+*token*
+*oauth*
+*accounts*.json
+*.db*
+*.pb*
+*.pbtxt
+*.jsonl
+*.log
+brain/
+conversations/
+history/
+cache/
+tmp/
+sandbox/
+crashes/
+log/
+logs/
+plugin_data/
+presence/
+node_modules/
