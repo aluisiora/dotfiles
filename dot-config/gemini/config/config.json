@@ -41,6 +41,7 @@
     },
     "enableNotificationsForSpecialEvents": false,
     "enableTerminalSandbox": false,
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
     "permissionGrantsV2Migrated": true,
     "remoteControlEnabled": false,
     "sandboxEnabledAtV2Migration": false,
