@@ -1,0 +1,66 @@
+{
+  "allowNonWorkspaceAccess": true,
+  "altScreenMode": "always",
+  "model": "Gemini 3.8 Flash (Medium)",
+  "notifications": true,
+  "permissions": {
+    "allow": [
+      "command(find)",
+      "command(cat)",
+      "command(grep)",
+      "command(rg)",
+      "command(fd)",
+      "command(awk)",
+      "command(less)",
+      "command(more)",
+      "command(head)",
+      "command(tail)",
+      "command(wc)",
+      "command(diff)",
+      "command(file)",
+      "command(stat)",
+      "command(ls)",
+      "command(git diff)",
+      "command(git show)",
+      "command(git log)",
+      "command(git status)",
+      "command(git grep)",
+      "command(go)",
+      "command(flutter)",
+      "command(dart)",
+      "command(which)",
+      "command(cd)",
+      "command(echo)"
+    ],
+    "ask": [
+      "command(go get)",
+      "command(go install)",
+      "command(go mod download)",
+      "command(go mod tidy)",
+      "command(flutter pub get)",
+      "command(flutter pub upgrade)",
+      "command(flutter pub add)",
+      "command(dart pub get)",
+      "command(dart pub upgrade)",
+      "command(dart pub add)"
+    ]
+  },
+  "showFeedbackSurvey": false,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.config/gemini/antigravity-cli/statusline.sh",
+    "enabled": true
+  },
+  "trustedWorkspaces": [
+    "/Users/aluisio/Projects/*",
+    "/home/aluisio/Projects/*",
+    "~/Projects/*",
+    "/Users/aluisio/.config/nvim",
+    "/home/aluisio/.config/nvim",
+    "~/.config/nvim",
+    "/Users/aluisio/.dotfiles",
+    "/home/aluisio/.dotfiles",
+    "~/.dotfiles"
+  ],
+  "verbosity": "low"
+}

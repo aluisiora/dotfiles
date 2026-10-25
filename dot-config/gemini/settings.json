@@ -1,0 +1,29 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "Default",
+    "footer": {
+      "hideContextPercentage": false
+    }
+  },
+  "general": {
+    "vimMode": true,
+    "defaultApprovalMode": "plan",
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "30d"
+    },
+    "plan": {
+      "enabled": true
+    }
+  },
+  "experimental": {},
+  "agents": {
+    "overrides": {}
+  }
+}

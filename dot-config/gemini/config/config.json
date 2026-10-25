@@ -1,0 +1,50 @@
+{
+  "plugins": {
+    "android-cli-plugin": {
+      "enabled": true,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/android-cli-plugin",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.16500706"
+      }
+    },
+    "flutter": {
+      "enabled": true,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/flutter",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.6"
+      }
+    },
+    "google-antigravity-sdk": {
+      "enabled": true,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/google-antigravity-sdk",
+        "marketplace": "antigravity-plugins-official",
+        "version": "0.0.9"
+      }
+    },
+    "modern-web-guidance-plugin": {
+      "enabled": true,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/modern-web-guidance-plugin",
+        "marketplace": "antigravity-plugins-official",
+        "version": "0.0.195"
+      }
+    }
+  },
+  "userSettings": {
+    "customThemeSeedsDark": {
+      "background": "#1A1B26",
+      "foregroundOverride": "#A9B1D6",
+      "primary": "#7AA2F7"
+    },
+    "enableNotificationsForSpecialEvents": false,
+    "enableTerminalSandbox": false,
+    "permissionGrantsV2Migrated": true,
+    "remoteControlEnabled": false,
+    "sandboxEnabledAtV2Migration": false,
+    "themeMode": "THEME_MODE_INHERIT",
+    "verboseAgentChat": false
+  }
+}
