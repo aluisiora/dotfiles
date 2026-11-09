@@ -8,10 +8,15 @@ if [[ -z $WORKING_DIR ]]; then
     # Static custom directories
     echo "$HOME/.config/nvim"
 
-    #  All main projects directly inside $HOME/Projects
-    for proj in "$HOME/Projects"/*; do
+    # Main projects, directly or grouped one level inside $HOME/Projects
+    for proj in "$HOME/Projects"/*(N) "$HOME/Projects"/*/*(N); do
       [ -d "$proj" ] && [ -e "$proj/.git" ] || continue
       echo "$proj"
+    done
+
+    # Herdr worktrees: <repo>/<worktree> inside $HOME/.herdr/worktrees
+    for wt in "$HOME/.herdr/worktrees"/*/*(N); do
+      [ -d "$wt" ] && echo "$wt"
     done
 
     # Worktrees derived from those projects
