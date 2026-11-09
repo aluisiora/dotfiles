@@ -142,7 +142,7 @@ description = "herdr-plus: quick actions"
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
 
 [worktrees]
-directory = "~/Projects/.worktrees"
+directory = "~/.herdr/worktrees"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
